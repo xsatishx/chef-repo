@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: nova-cinder-pdc
-# Recipe:: default
+# Recipe:: cloudcontroller
 #
-# Copyright 2013, Laboratory for Advanced Computing
+# Copyright 2016, HealthSeq Asia Pvt. Ltd.
 #
 # All rights reserved - Do Not Redistribute
 #

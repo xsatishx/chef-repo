@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: nova-cinder-pdc
-# Recipe:: default
+# Recipe:: pdcv3-cloudcontroller
 #
-# Copyright 2013, Laboratory for Advanced Computing
+# Copyright 2016, HealthSeq Asia Pvt. Ltd.
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -11,6 +11,7 @@ package "cinder-api" do
   action :install
   action :upgrade
 end
+
 package "cinder-scheduler" do
   action :install
   action :upgrade
@@ -37,6 +38,7 @@ template "/etc/cinder/cinder.conf" do
   notifies :restart, "service[cinder-api]"
   notifies :restart, "service[cinder-scheduler]"
 end
+
 template "/root/initialize_openstack/initialize_cinder.sh" do 
   mode "400"
   owner "root"

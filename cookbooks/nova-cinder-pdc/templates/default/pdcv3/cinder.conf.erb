@@ -1,6 +1,6 @@
 [DEFAULT]
 rootwrap_config = /etc/cinder/rootwrap.conf
-api_paste_confg = /etc/cinder/api-paste.ini
+api_paste_config = /etc/cinder/api-paste.ini
 iscsi_helper = tgtadm
 volume_name_template = volume-%s
 #volume_group = cinder-volumes
@@ -10,17 +10,12 @@ state_path = /var/lib/cinder
 lock_path = /var/lock/cinder
 volumes_dir = /var/lib/cinder/volumes
 
-
-
 #Keep Connections under controll
 #https://bugs.launchpad.net/nova/+bug/1225655
 rpc_conn_pool_size=100
 rpc_response_timeout=200
 rabbit_retry_interval=5
 rabbit_retry_backoff=5
-
-
-
 
 ##ceph backend
 volume_driver=cinder.volume.drivers.rbd.RBDDriver

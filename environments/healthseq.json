@@ -1,4 +1,116 @@
 {
   "name": "healthseq",
-  "description": "CPPH environment by Healthseq"
+  "description": "CPPH environment by Healthseq",
+  "default_attributes": {
+    "ssh_keys": {
+      "root": [
+        "satish"
+      ],
+      "lacadmin": [
+        "satish"
+      ]
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "10.0.2.252"
+      ]
+    },
+    "dnsmasq": {
+      "nameservers": [
+        "10.0.2.252"
+      ]
+    },
+     "cloud": {
+      "hostname": "dev-controller",
+      "fqdn": "dev-controller",
+      "api_host": "10.0.2.12",
+      "chef_version": "pdcv3",
+      "cc_ipaddress": "10.0.2.12"
+    },
+    "ldap": {
+      "passwd": "ozooghogheipiexiesheishazaiveayi",
+      "host": "10.0.2.12",
+      "dc": "dc=igsb,dc=osdc,dc=io",
+      "max_uid": "22999",
+      "min_uid": "22000",
+      "max_gid": "22999",
+      "min_gid": "22000",
+      "nofile": "102400",
+      "cloud_sid": ""
+    },
+    "mysql": {
+      "passwd": "lahphelaavovohheithaiwahwooveewo",
+      "host": "10.0.2.12",
+      "keystone_passwd": "eungairaipikaecoovuengohdiesooxi",
+      "glance_passwd": "eevoojohdohxahgielosohjiexufieli",
+      "nova_passwd": "ohhaiteikooghahghoohisohfefeebak",
+      "cinder_passwd": "ohgheideiqueiyohgaecaijahyeengie",
+      "neutron_passwd": "aecaefahqueixoemeeshaevoadoozuvi",
+      "nofile": "102400"
+    },
+    "rabbitmq": {
+      "host": "10.0.2.12",
+      "passwd": "Ledooth1",
+      "nofile": "102400"
+    },
+    "keystone": {
+      "admin_token": "efe94a9135bc733851c51b",
+      "admin_passwd": "huefithohphocajaiquaiciwohnoquea",
+      "host": "10.0.2.12",
+      "token_expiration": "86400"
+    },
+    "glance": {
+      "host": "10.0.2.12",
+      "passwd": "ohvaechiechoovaquetaeyeiceehieza",
+      "num_workers": "3",
+      "nofile": "102400"
+    },
+    "nova": {
+      "version": "liberty",
+      "host": "10.0.2.12",
+      "passwd": "toceewaihaenaitheexootheiloosaiy",
+      "flat_interface": "bond0",
+      "public_interface": "bond0.3526",
+      "flat_network_bridge": "virbr1",
+      "metadata_proxy_shared_secret": "eibecahweiliesajeibaatoamoaweith",
+      "nofile": "102400",
+      "rbd_secret_uuid": "6cba490e-208a-449c-8bbe-783ea62bee04",
+      "default_cores": "16",
+      "default_fixed_ips": "-1",
+      "default_floating_ips": "0",
+      "default_number_instances": "16",
+      "default_ram": "49152"
+    },
+    "cinder": {
+      "host": "10.0.2.12",
+      "passwd": "zishaashahrahbaegeidoorohsacafah",
+      "nofile": "102400"
+    },
+    "swift": {
+      "host": "10.0.2.12",
+      "passwd": "seilaniongeiphielewiereeshooshoo",
+      "nofile": "102400"
+    },
+    "neutron": {
+      "host": "10.0.2.12",
+      "passwd": "beizeijoxaeyayuaphaexeeraniexech",
+      "metadata_proxy_shared_secret": "eephomaowairuyaeyushuphakoojequu",
+      "service_tenant_id": "e907070c36ea4b12a386deddf48b31ae",
+      "nofile": "1024"
+    },
+    "ceilometer": {
+      "host": "10.0.2.12",
+      "passwd": "eijivouyeideewacuquophaedisheeth",
+      "mongodb_passwd": "ieshieliquaefiocheerikiesoobipei",
+      "metering_secret_hex_token": "c2f27e3c1c958ae4878600"
+    },
+    "ceph": {
+      "raidos_host": "10.0.2.19",
+      "glance_key": "AQCuM5JU0Nv+MRAA4ZSHyTYK5iLE7C3oC5W9AA==",
+      "cinder_key": "AQCpM5JUiGTJOhAAHs4h1HKTOfxlHYzuZPsxuA==",
+      "release_name": "hammer"
+    }
+   }
 }

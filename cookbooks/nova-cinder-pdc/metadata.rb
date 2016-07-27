@@ -1,6 +1,6 @@
 name             'nova-cinder-pdc'
-maintainer       'Laboratory for Advanced Computing'
-maintainer_email 'rpowell1@uchicago.edu'
+maintainer       'HealthSeq Asia Pvt. Ltd.'
+maintainer_email 'satish@healtseq.com'
 license          'All rights reserved'
 description      'Installs/Configures nova-cinder'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
