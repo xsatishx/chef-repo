@@ -2,7 +2,7 @@
 # Cookbook Name:: nova-client-pdc
 # Recipe:: default
 #
-# Copyright 2013, Laboratory for Advanced Computing
+# Copyright 2016, HealthSeq Asia Pvt. Ltd.
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -17,7 +17,9 @@ packages = ['ceph-common',
             'python-guestfs',
             'xtightvncviewer']
 
-services = ['nova-compute', 'nova-network', 'nova-api-metadata']
+services = ['nova-compute', 
+            'nova-network', 
+            'nova-api-metadata']
 
 # Installing this first __should__ take care of the keys
 package 'ubuntu-cloud-keyring' do

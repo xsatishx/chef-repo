@@ -2,7 +2,7 @@
 # Cookbook Name:: nova-ceilomter-pdc
 # Recipe:: pdcv3
 #
-# Copyright 2013, Laboratory for Advanced Computing
+# Copyright 2016, HealthSeq Asia Pvt. Ltd.
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -11,30 +11,37 @@ package "ceilometer-api" do
   action :install
   action :upgrade
 end
+
 package "ceilometer-collector" do
   action :install
   action :upgrade
 end
+
 package "ceilometer-agent-central" do
   action :install
   action :upgrade
 end
+
 package "ceilometer-agent-notification" do
   action :install
   action :upgrade
 end
+
 package "ceilometer-alarm-evaluator" do
   action :install
   action :upgrade
 end
+
 package "ceilometer-alarm-notifier" do
   action :install
   action :upgrade
 end
+
 package "python-ceilometerclient" do
   action :install
   action :upgrade
 end
+
 package "mongodb-server" do
   action :install
   action :upgrade
@@ -46,32 +53,38 @@ service "ceilometer-agent-central" do
   #action [:enable]#, :start, :restart]
   action [:enable]
 end
+
 service "ceilometer-agent-notification" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
   #action [:enable]#, :start, :restart]
   action [:enable]
 end
+
 service "ceilometer-api" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
   action [:enable]# :start, :restart]
 end
+
 service "ceilometer-collector" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
   action [:enable]#, :start, :restart]
 end
+
 service "ceilometer-alarm-evaluator" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
   action [:enable]#, :start, :restart]
 end
+
 service "ceilometer-alarm-notifier" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
   action [:enable]#, :start, :restart]
 end
+
 service "mongodb" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
@@ -85,6 +98,7 @@ template "/etc/mongodb.conf" do
   source "#{node.cloud.chef_version}/#{ node.type }/mongodb.conf.erb"
   notifies :restart, "service[mongodb]"
 end
+
 template "/etc/ceilometer/ceilometer.conf" do 
   mode "440"
   owner "ceilometer"
@@ -97,6 +111,7 @@ template "/etc/ceilometer/ceilometer.conf" do
   notifies :restart, "service[ceilometer-alarm-evaluator]"
   notifies :restart, "service[ceilometer-alarm-notifier]"
 end
+
 template "/root/initialize_openstack/initialize_ceilometer.sh" do
   mode "400"
   owner "root"

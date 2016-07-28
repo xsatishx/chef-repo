@@ -1,6 +1,6 @@
 name             'nova-client-pdc'
-maintainer       'Laboratory for Advanced Computing'
-maintainer_email 'rsuarez@uchicago.edu'
+maintainer       'HealthSeq Asia Pvt. Ltd.'
+maintainer_email 'satish@healthseq.com'
 license          'All rights reserved'
 description      'Installs/Configures nova-client'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

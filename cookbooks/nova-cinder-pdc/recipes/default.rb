@@ -8,4 +8,4 @@
 #
 #
 
-include_recipe 'nova-glance-pdc::pdcv3'
+include_recipe 'nova-cinder-pdc::pdcv3-cloudcontroller'

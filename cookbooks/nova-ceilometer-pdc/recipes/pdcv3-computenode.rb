@@ -11,11 +11,13 @@ package "ceilometer-agent-compute" do
   action :install
   action :upgrade
 end
+
 service "ceilometer-agent-compute" do
   provider Chef::Provider::Service::Upstart
   supports :status => true, :restart => true, :stop => true, :start => true
   action [:enable]#, :start, :restart]
 end
+
 template "/etc/ceilometer/ceilometer.conf" do 
   mode "440"
   owner "ceilometer"

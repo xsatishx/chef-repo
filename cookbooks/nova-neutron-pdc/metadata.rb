@@ -1,5 +1,5 @@
 name             'nova-neutron-pdc'
-maintainer       'HealthSeq Asia Pvt. Ltd.'
+maintainer       'HealthSeq Asia Pvt. Ltd.# => '
 maintainer_email 'satish@healthseq.com'
 license          'All rights reserved'
 description      'Installs/Configures neutron'
