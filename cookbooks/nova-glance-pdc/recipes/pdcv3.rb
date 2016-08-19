@@ -63,6 +63,7 @@ template "/etc/glance/glance-registry.conf" do
   notifies :restart, "service[glance-registry]"
 end
 
+
 template "/root/initialize_openstack/initialize_glance.sh" do
   mode "400"
   owner "root"

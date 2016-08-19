@@ -29,8 +29,11 @@ directory "/root/initialize_openstack" do
   mode "700"
   owner "root"
   group "root"
+  action :create
 end
 
+
+  
 template "/etc/keystone/keystone.conf" do 
   mode "440"
   owner "keystone"
@@ -79,23 +82,23 @@ template "/root/initialize_openstack/initialize_rabbitmq.sh" do
   source "#{node.cloud.chef_version}/initialize_rabbitmq.sh.erb"
 end
 
-file "/etc/keystone/ssl.ca-bundle" do
-  content "#{node.ssl.ca_bundle}"
-  owner "keystone"
-  group "keystone"
-  mode "0440"
-end
+# file "/etc/keystone/ssl.ca-bundle" do
+#   content "#{node.ssl.ca_bundle}"
+#   owner "keystone"
+#   group "keystone"
+#   mode "0440"
+# end
 
-file "/etc/keystone/ssl.crt" do
-  content "#{node.ssl.wildcard_cert}"
-  owner "keystone"
-  group "keystone"
-  mode "0440"
-end
+# file "/etc/keystone/ssl.crt" do
+#   content "#{node.ssl.wildcard_cert}"
+#   owner "keystone"
+#   group "keystone"
+#   mode "0440"
+# end
 
-file "/etc/keystone/ssl.key" do
-  content "#{node.ssl.wildcard_key}"
-  owner "keystone"
-  group "keystone"
-  mode "0440"
-end
+# file "/etc/keystone/ssl.key" do
+#   content "#{node.ssl.wildcard_key}"
+#   owner "keystone"
+#   group "keystone"
+#   mode "0440"
+# end

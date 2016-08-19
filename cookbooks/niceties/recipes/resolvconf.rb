@@ -3,5 +3,12 @@ cookbook_file "/etc/resolvconf/resolv.conf.d/head" do
     mode "644"
     owner "root"
     group "root"
-    source head
+    source "head"
+end
+
+bash 'Restart resolvcon' do
+  user 'root'
+  code <<-EOH
+  resolvconf -u
+  EOH
 end

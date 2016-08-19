@@ -1,0 +1,17 @@
+{
+  "name": "healthseq_controller",
+  "run_list": [
+    "role[base]",
+    "recipe[nscd]",
+    "recipe[fail2ban]",
+    "recipe[nrpe]",
+    "recipe[bash]",
+    "recipe[hosts]",
+    "recipe[cpu]",
+    "recipe[mysql-server-5.5]",
+    "recipe[nova-keystone-pdc]",
+    "recipe[nova-glance-pdc]",
+    "recipe[nova-cloudcontroller-pdc]",
+    "recipe[nova-cinder-pdc]"
+  ]
+}

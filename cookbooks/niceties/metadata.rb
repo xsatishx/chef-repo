@@ -1,4 +1,4 @@
-name             'nicities'
+name             'niceties'
 maintainer       'Laboratory for Advanced Computing'
 maintainer_email 'kaschmitt@uchicago.edu'
 license          'All rights reserved'

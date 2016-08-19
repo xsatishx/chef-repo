@@ -9,8 +9,8 @@
 
 template "/root/creds_source" do
   mode "440"
-  owner "openldap"
-  group "openldap"
+  owner "root"
+  group "root"
   source "creds_source.#{node.chef_environment}.erb"
   variables(
   )

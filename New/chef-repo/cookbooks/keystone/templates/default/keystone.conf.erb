@@ -1,0 +1,22 @@
+[DEFAULT]
+admin_token = <%= node['keystone']['os_token'] %>
+verbose = true
+log_dir = /var/log/keystone
+
+
+[database]
+connection = mysql://<%= node['keystone']['db_user'] %>:<%= node['keystone']['db_pass'] %>@<%= node['keystone']['host_ip'] %>/<%= node['keystone']['db_name'] %>
+
+[memcache]
+servers = localhost:11211
+
+[revoke]
+driver = sql
+
+[token]
+provider = uuid
+driver = memcache
+
+[extra_headers]
+Distribution = Ubuntu
+tyg

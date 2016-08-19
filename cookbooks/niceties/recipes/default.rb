@@ -76,11 +76,11 @@ else
   puts '####' if $debug
 end
 
-package('smartmontools') { action :install }
-service 'smartmontools' do
-  supports :restart => true, :status => true
-  action [:enable, :start]
-end
+# package('smartmontools') { action :install }
+# service 'smartmontools' do
+#   supports :restart => true, :status => true
+#   action [:enable, :start]
+# end
 
 # just drop in files that aren't templates
 nicefiles.each do |target, source|

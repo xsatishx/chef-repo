@@ -7,4 +7,4 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'nova-keystone-pdc:pdcv3'
+include_recipe 'nova-keystone-pdc::pdcv3'

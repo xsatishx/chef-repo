@@ -1,0 +1,8 @@
+export OS_PROJECT_DOMAIN_ID=default
+export OS_USER_DOMAIN_ID=default
+export OS_PROJECT_NAME=<%= node['keystone']['endpoint_project'] %>
+export OS_TENANT_NAME=<%= node['keystone']['endpoint_tenant'] %>
+export OS_USERNAME=<%= node['keystone']['endpoint_user'] %>
+export OS_PASSWORD=<%= node['keystone']['endpoint_pass'] %>
+export OS_AUTH_URL=http://<%= node['keystone']['host_ip'] %>:35357/v3
+export OS_IDENTITY_API_VERSION=3

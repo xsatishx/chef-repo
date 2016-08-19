@@ -1,0 +1,27 @@
+{
+  "name": "base",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ntp": {
+      "servers": [
+        "pxeboot"
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+  
+    "recipe[apt]",
+    "recipe[nscd]",
+    "recipe[fasterdata]",
+    "recipe[ntp]",
+    "recipe[nrpe]",
+    "recipe[niceties::resolvconf]"
+   
+  ],
+  "env_run_lists": {
+  }
+}
