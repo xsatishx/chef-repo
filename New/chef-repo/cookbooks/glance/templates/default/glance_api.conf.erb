@@ -1,0 +1,35 @@
+
+[DEFAULT]
+verbose = True
+notification_driver = noop
+#default_store = rbd
+show_image_direct_url = True
+
+[database]
+connection = mysql://<%= node['glance']['db_user'] %>:<%= node['glance']['db_pass'] %>@<%= node['glance']['host_ip'] %>/<%= node['glance']['db_name'] %>
+
+[glance_store]
+
+# default_store = file
+# filesystem_store_datadir = /var/lib/glance/images/
+
+stores = rbd
+default_store = rbd
+rbd_store_pool = images
+rbd_store_user = glance
+rbd_store_ceph_conf = /etc/ceph/ceph.conf
+rbd_store_chunk_size = 8
+
+[keystone_authtoken]
+auth_uri = http://<%= node['glance']['host_ip'] %>:5000
+auth_url = http://<%= node['glance']['host_ip'] %>:35357
+auth_plugin = password
+project_domain_id = default
+user_domain_id = default
+project_name = service
+username = <%= node['glance']['db_user'] %>
+password = <%= node['glance']['db_pass'] %>
+
+[paste_deploy]
+flavor = keystone
+

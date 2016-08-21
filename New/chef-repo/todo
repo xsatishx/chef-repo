@@ -1,0 +1,7 @@
+TO DO
+
+1) Create a cookbook for creating creds file and running allmysql scripts
+2) Create the mysql-seed file as template and then use the same passwrod in other cookbooks
+3) Check in all recipes for the usage of host_ip and management-ip
+4) vncserver_listen = $my_ip , we have used 0.0.0.0
+5) Verify nova again

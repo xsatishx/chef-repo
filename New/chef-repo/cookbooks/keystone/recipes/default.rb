@@ -12,15 +12,10 @@
 # TO DO - Check if the single quotes in templates gets resolved , then uncomment the execution part below.
 # ###########TO DO - Edit the /etc/apache2/apache2.conf file and configure the ServerName option to reference the controller node:###########################
 # Check attribute node ipaddress resolvation?
+# ServerName controller needs to be added to apache 2
 
-ServerName controller
 
-template '/root/scripts/keystone.sh' do
-  source 'keystone.sh.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
-end
+# Step to create keystone db is in openstack-prep cookbook
 
 # Prevent keystone service from starting automatically after installation
 bash 'prevent-keystone-service-startup' do
@@ -35,32 +30,34 @@ end
 
 package 'keystone' do
   action :install
+  action :upgrade
 end
 
 package 'apache2' do
   action :install
+  action :upgrade
 end
 
 package 'libapache2-mod-wgsi' do
   action :install
+  action :upgrade
 end
 
 package 'memcached' do
   action :install
+  action :upgrade
 end
 
 package 'python-memcache' do
   action :install
+  action :upgrade
 end
 
 template "/etc/keystone/keystone.conf" do 
-  mode "440"
-  owner "keystone"
-  group "keystone"
+  mode "0644"
+  owner "root"
+  group "root"
   source "keystone.conf.erb"
-  variables(
-  )
-  notifies :restart, "service[keystone]"
 end
 
 #Populate the database
@@ -70,6 +67,11 @@ bash 'Populate-keystone-database' do
   code <<-EOH
     su -s /bin/sh -c "keystone-manage db_sync" keystone
   EOH
+end
+
+service 'keystone' do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable]
 end
 
 ### PLEASE DO THE STEP IN TODO 3 #######################
@@ -91,14 +93,16 @@ end
 
 service 'apache2' do
   supports :status => true, :restart => true, :reload => true
-  action [:start, :enable]
+  action [:enable]
 end
 
 bash 'delete sqlite database' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-    rm -f /var/lib/keystone/keystone.db
+     if [ -f /var/lib/keystone/keystone.db ] then
+       rm -f /var/lib/keystone/keystone.db
+     fi
   EOH
 end
 
@@ -125,17 +129,3 @@ bash 'endpoint creation...' do
   EOH
 end
 
-template '/root/scripts/keystone_users_projects.sh' do
-  source 'keystone_users_projects.sh.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
-end
-
-bash 'Create project-user-roles' do
-  user 'root'
-  cwd '/root/scripts/'
-  code <<-EOH
-    sh keystone_users_projects.sh
-  EOH
-end

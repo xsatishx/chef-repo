@@ -35,3 +35,9 @@ directory '/root/scripts' do
   mode '0755'
   action :create
 end
+
+for packages in [ "wget", "python-dev", "python-pip", "git", "wget", "curl"] do
+  package packages do
+    action :install
+  end
+end

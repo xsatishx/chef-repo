@@ -1,0 +1,15 @@
+
+echo "Creating glance user ..."
+openstack user create --domain default --password <%= node['glance']['endpoint_pass'] %> <%= node['glance']['endpoint_user'] %>
+
+echo "Adding admin role to glance user ... "
+openstack role add --project service --user <%= node['glance']['endpoint_user'] %> admin
+
+echo "Adding the openstack image service ... "
+openstack service create --name <%= node['glance']['endpoint_user'] %> --description "OpenStack Image service" image
+
+echo "Creating glance endpoints ..."
+openstack endpoint create --region RegionOne image public http://<%= node['glance']['host_ip'] %>:9292
+openstack endpoint create --region RegionOne image internal http://<%= node['glance']['host_ip'] %>:9292
+openstack endpoint create --region RegionOne image admin http://<%= node['glance']['host_ip'] %>:9292
+

@@ -15,7 +15,7 @@ end
 bash 'Add rabbitmq user' do
   user 'root'
   code <<-EOH
-     rabbitmqctl add_user openstack RABBIT_PASS rabbitmqctl add_user openstack healthseq
+     rabbitmqctl add_user openstack healthseq
   EOH
 end
 

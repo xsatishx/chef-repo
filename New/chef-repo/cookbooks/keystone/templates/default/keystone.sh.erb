@@ -1,5 +1,0 @@
-mysql -u <%= node['keystone']['mysql_root_user'] %> -p<%= node['keystone']['mysql_root_pass'] %> <<MYSQL_SCRIPT
-CREATE DATABASE <%= node['keystone']['db_name'] %>;
-GRANT ALL PRIVILEGES ON <%= node['keystone']['db_name'] %>.* TO "<%= node['keystone']['db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['keystone']['dbpass'] %>";
-GRANT ALL PRIVILEGES ON <%= node['keystone']['db_name'] %>.* TO "<%= node['keystone']['db_user'] %>"@'%' IDENTIFIED BY "<%= node['keystone']['dbpass'] %>";
-MYSQL_SCRIPT
