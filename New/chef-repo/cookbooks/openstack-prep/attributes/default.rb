@@ -27,3 +27,8 @@ default['openstack_prep']['novacompute_db_name'] = 'nova'
 default['openstack_prep']['novacompute_db_user'] = 'nova'
 default['openstack_prep']['novacompute_db_pass'] = 'healthseq'
 #default['openstack_prep']['novacompute_db_file'] = 'novacompue.sh'
+
+default['openstack_prep']['cinder_db_name'] = 'cinder'
+default['openstack_prep']['cinder_db_user'] = 'cinder'
+default['openstack_prep']['cinder_db_pass'] = 'healthseq'
+#default['openstack_prep']['cinder_db_file'] = 'cinder.sh'

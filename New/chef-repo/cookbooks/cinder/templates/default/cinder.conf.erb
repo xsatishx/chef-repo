@@ -1,0 +1,54 @@
+
+[DEFAULT]
+rootwrap_config = /etc/cinder/rootwrap.conf
+api_paste_confg = /etc/cinder/api-paste.ini
+iscsi_helper = tgtadm
+volume_name_template = volume-%s
+volume_group = cinder-volumes
+verbose = True
+auth_strategy = keystone
+state_path = /var/lib/cinder
+lock_path = /var/lock/cinder
+volumes_dir = /var/lib/cinder/volumes
+my_ip = <%= node['cinder']['management_ip'] %>
+rpc_backend = rabbit
+verbose = True
+auth_strategy = keystone
+enabled_backends = ceph
+
+[ceph]
+volume_driver = cinder.volume.drivers.rbd.RBDDriver
+rbd_pool = volumes
+rbd_ceph_conf = /etc/ceph/ceph.conf
+rbd_flatten_volume_from_snapshot = false
+rbd_max_clone_depth = 5
+rbd_store_chunk_size = 4
+rados_connect_timeout = -1
+glance_api_version = 2
+rbd_user = cinder
+rbd_secret_uuid = 1dd5820a-e6d6-4bdd-b490-1e935b84d2e2
+
+[database]
+connection = mysql://<%= node['cinder']['db_user'] %>:<%= node['cinder']['db_pass'] %>@<%= node['cinder']['host_ip']/<%= node['cinder']['db_name']
+
+
+[keystone_authtoken]
+#auth_uri = http://<%= node['cinder']['host_ip'] %>:5000/v2.0
+#identity_uri = http://<%= node['cinder']['host_ip'] %>:35357
+#admin_tenant_name = service
+#admin_user = cinder
+#admin_password = service_pass
+auth_uri = http://<%= node['cinder']['host_ip'] %>:5000
+auth_url = http://<%= node['cinder']['host_ip'] %>:35357
+auth_plugin = password
+project_domain_id = default
+user_domain_id = default
+project_name = service
+username = <%= node['cinder']['db_user'] %>
+password = <%= node['cinder']['db_pass'] %>
+
+
+[oslo_messaging_rabbit]
+rabbit_host = <%= node['cinder']['host_ip'] %>
+rabbit_userid = openstack
+rabbit_password = healthseq

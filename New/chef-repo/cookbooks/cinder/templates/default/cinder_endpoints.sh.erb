@@ -1,0 +1,19 @@
+
+echo "Creating cinder user ..."
+openstack user create --domain default --password <%= node['cinder']['endpoint_pass'] %> <%= node['cinder']['endpoint_user'] %>
+
+echo "Adding admin role to cinder user ... "
+openstack role add --project service --user <%= node['cinder']['endpoint_user'] %> admin
+
+echo "Adding the openstack volume and volume2 service ... "
+openstack service create --name cinder --description "OpenStack Block Storage" volume
+openstack service create --name cinderv2 --description "OpenStack Block Storage" volumev2
+
+echo "Creating cinder volume endpoints ..."
+openstack endpoint create --region RegionOne volume public http://<%= node['cinder']['host_ip'] %>:9292
+openstack endpoint create --region RegionOne volume internal http://<%= node['cinder']['host_ip'] %>:9292
+openstack endpoint create --region RegionOne volume admin http://<%= node['cinder']['host_ip'] %>:9292
+
+openstack endpoint create --region RegionOne volumev2 public http://<%= node['cinder']['host_ip'] %>:8776/v2/%\(tenant_id\)s
+openstack endpoint create --region RegionOne volumev2 internal http://<%= node['cinder']['host_ip'] %>:8776/v2/%\(tenant_id\)s
+openstack endpoint create --region RegionOne volumev2 admin http://<%= node['cinder']['host_ip'] %>:8776/v2/%\(tenant_id\)s

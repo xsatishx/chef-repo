@@ -1,0 +1,5 @@
+mongo --host <%= node['telemetry']['host_ip'] %> --eval '
+db = db.getSiblingDB("<%= node['telemetry']['db_name'] %>");
+db.addUser({user: "<%= node['telemetry']['db_user'] %>",
+pwd: "<%= node['telemetry']['db_pass'] %>",
+roles: [ "readWrite", "dbAdmin" ]})'

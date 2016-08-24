@@ -16,6 +16,15 @@ package 'sysfsutils' do
   action :install
 end
 
+package 'nova-network' do
+  action :install
+end
+
+package 'nova-api-metadata' do
+  action :install
+end
+
+
 template '/etc/nova/nova.conf' do
   source 'novacompute2.conf.erb'
   owner 'nova'
@@ -38,3 +47,19 @@ bash 'remove nova sqlite database' do
     fi
   EOH
 end
+
+service 'nova-network' do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable]
+end
+
+service 'nova-api-metadata' do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable]
+end
+
+service 'nova-compute' do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable]
+end
+

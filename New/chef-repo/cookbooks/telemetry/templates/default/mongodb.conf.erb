@@ -1,0 +1,18 @@
+
+# mongodb.conf
+
+# Where to store the data.
+dbpath=/var/lib/mongodb
+
+#where to log
+logpath=/var/log/mongodb/mongodb.log
+
+logappend=true
+
+bind_ip = <%= node['telemetry']['host_ip'] %>
+#port = 27017
+
+# Enable journaling, http://www.mongodb.org/display/DOCS/Journaling
+journal=true
+smallfiles = true
+

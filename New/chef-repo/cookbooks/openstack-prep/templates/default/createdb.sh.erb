@@ -15,6 +15,10 @@ CREATE DATABASE <%= node['openstack_prep']['novacompute_db_name'] %>;
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['novacompute_db_name'] %>.* TO "<%= node['openstack_prep']['novacompute_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['novacompute_db_pass'] %>";
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['novacompute_db_name'] %>.* TO "<%= node['openstack_prep']['novacompute_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['novacompute_db_pass'] %>";
 
+CREATE DATABASE <%= node['openstack_prep']['cinder_db_name'] %>;
+GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['cinder_db_name'] %>.* TO "<%= node['openstack_prep']['cinder_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['cinder_db_pass'] %>";
+GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['cinder_db_name'] %>.* TO "<%= node['openstack_prep']['cinder_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['cinder_db_pass'] %>";
+
 MYSQL_SCRIPT
 
 

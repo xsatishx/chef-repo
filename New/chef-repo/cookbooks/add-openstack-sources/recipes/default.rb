@@ -36,7 +36,7 @@ directory '/root/scripts' do
   action :create
 end
 
-for packages in [ "wget", "python-dev", "python-pip", "git", "wget", "curl"] do
+for packages in [ "wget", "python-dev", "python-pip", "git", "wget", "curl", "apache2"] do
   package packages do
     action :install
   end

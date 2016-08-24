@@ -68,3 +68,6 @@ host = <%= node['nova-compute']['management_ip'] %>
 
 [oslo_concurrency]
 lock_path = /var/lib/nova/tmp
+
+[cinder]
+os_region_name = RegionOne
