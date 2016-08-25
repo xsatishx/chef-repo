@@ -1,9 +1,12 @@
 
 [DEFAULT]
 verbose = True
-notification_driver = noop
+# for telemetry commented the below and added messagingv2
+#notification_driver = noop
+notification_driver = messagingv2
 #default_store = rbd
 show_image_direct_url = True
+rpc_backend = rabbit
 
 [database]
 connection = mysql://<%= node['glance']['db_user'] %>:<%= node['glance']['db_pass'] %>@<%= node['glance']['host_ip'] %>/<%= node['glance']['db_name'] %>
@@ -30,7 +33,14 @@ project_name = service
 username = <%= node['glance']['db_user'] %>
 password = <%= node['glance']['db_pass'] %>
 
+# For telemetry
+[oslo_messaging_rabbit]
+rabbit_host = <%= node['glance']['host_ip'] %>
+rabbit_userid = openstack
+rabbit_password = rabbit
+
 [paste_deploy]
+
 flavor = keystone
 
 

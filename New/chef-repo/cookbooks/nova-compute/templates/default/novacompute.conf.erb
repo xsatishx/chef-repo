@@ -13,6 +13,11 @@ enabled_apis=ec2,osapi_compute,metadata
 verbose = true
 rpc_backend = rabbit
 auth_strategy = keystone
+# for telemetry
+instance_usage_audit = True
+instance_usage_audit_period = hour
+notify_on_state_change = vm_and_task_state
+notification_driver = messagingv2
 
 #this is for nova-network
 

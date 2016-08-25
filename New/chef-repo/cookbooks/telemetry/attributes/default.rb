@@ -13,3 +13,6 @@ default['telemetry']['management_ip'] = '10.1.0.13'
 default['telemetry']['db_name'] = 'ceilometer'
 default['telemetry']['db_user'] = 'ceilometer'
 default['telemetry']['db_pass'] = 'healthseq'
+
+default['telemetry']['endpoint_user'] = 'ceilometer'
+default['telemetry']['endpoint_pass'] = 'healthseq'
