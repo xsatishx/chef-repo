@@ -6,3 +6,10 @@ TO DO
 4) vncserver_listen = $my_ip , we have used 0.0.0.0
 5) Verify nova again
 6) Check if glance.conf/cinder.conf is owned by root or glance/cinder
+
+run list
+1) add-openstack-sources
+2) ntp
+3) openssh
+4) hosts
+5) mysql-server --need to check
