@@ -24,23 +24,18 @@ cookbook_file '/tmp/mysql-seed' do
   mode '0644'
 end
 
-# No template or cookbook file found for response file  = just use bash as below
-package "mysql-server-5.5" do
-  action :install
-  response_file '/tmp/mysql-seed'
-  notifies :create, "template[/etc/mysql/conf.d/mysqld_openstack.cnf]", :immediately
+template 'mysql-seed' do
+  source 'mysql-seed.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
 end
 
-
-# bash 'install-mysql-server' do
-#   user 'root'
-#   code <<-EOH
-#     sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password healthseq'
-#     sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password healthseq'
-#     sudo apt-get -y install mysql-server-5.5
-#   EOH
-# end
-
+package "mysql-server-5.5" do
+  action :install
+  response_file 'mysql-seed'
+  notifies :create, "template[/etc/mysql/conf.d/mysqld_openstack.cnf]", :immediately
+end
 
 template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
   source 'mysqld_openstack.cnf.erb'
@@ -49,21 +44,23 @@ template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
   mode '0644'
 end
 
-# test run could not find this package on aws
-package 'python-pymysql' do
-  action :install
-end
-
-
 service "mysql" do
   provider Chef::Provider::Service::Init::Debian
   supports :status => true, :restart => true, :stop => true, :start => true
   action [:enable]
 end
 
-bash 'secure installation' do
+cookbook_file '/tmp/secure.sh' do
+  source 'secure.sh'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+bash 'secure-mysql-installation' do
   user 'root'
+  cwd '/tmp'
   code <<-EOH
-  mysql_secure_installation
+    sh secure.sh 
   EOH
 end
