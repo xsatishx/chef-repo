@@ -22,6 +22,14 @@ package 'software-properties-common' do
   action :install
 end
 
+bash 'add-apt-repo' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    add-apt-repository cloud-archive:liberty
+  EOH
+end
+
 include_recipe 'apt'
 
 package 'python-openstackclient' do

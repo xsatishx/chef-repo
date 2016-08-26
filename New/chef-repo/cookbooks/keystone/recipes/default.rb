@@ -48,6 +48,12 @@ package 'memcached' do
   action :upgrade
 end
 
+package 'python-mysqldb' do
+  action :install
+  action :upgrade
+end
+
+
 package 'python-memcache' do
   action :install
   action :upgrade
@@ -69,6 +75,14 @@ bash 'Populate-keystone-database' do
   EOH
 end
 
+# Alternative to above command
+# cmdString = "su -s /bin/sh -c 'keystone-manage db_sync' keystone"
+#   Chef::Log.info("CMD> "+cmdString)
+#   IO.popen(cmdString).each do |line|
+#   Chef::Log.info("OUT> "+line.chomp)
+# end
+
+
 service 'keystone' do
   supports :status => true, :restart => true, :reload => true
   action [:enable]
@@ -87,7 +101,7 @@ bash 'enable virtual hosts' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-    ln -s /etc/apache2/sites-available/wsgi-keystone.conf /etc/apache2/sites-enabled
+    ln -sf /etc/apache2/sites-available/wsgi-keystone.conf /etc/apache2/sites-enabled
   EOH
 end
 
@@ -100,14 +114,19 @@ bash 'delete sqlite database' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-     if [ -f /var/lib/keystone/keystone.db ] then
-       rm -f /var/lib/keystone/keystone.db
-     fi
+    rm -f /var/lib/keystone/keystone.db
   EOH
 end
 
 template '/root/scripts/initial_creds' do
   source 'initial_creds.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+template '/root/scripts/creds' do
+  source 'creds.erb'
   owner 'root'
   group 'root'
   mode '0644'
