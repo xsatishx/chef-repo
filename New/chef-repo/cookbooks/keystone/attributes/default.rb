@@ -16,7 +16,7 @@ default['keystone']['db_pass'] = 'healthseq'
 default['keystone']['mysql_root_user'] = 'root'
 default['keystone']['mysql_root_pass'] = 'healthseq'
 default['keystone']['os_token'] = 'healthseq'
-default['keystone']['os_url'] = "http://node['keystone']['host_ip']:35357/v3"
+
 
 default['keystone']['endpoint_user'] = 'admin'
 default['keystone']['endpoint_pass'] = 'healthseq'

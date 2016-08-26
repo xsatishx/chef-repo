@@ -3,7 +3,6 @@ admin_token = <%= node['keystone']['os_token'] %>
 verbose = true
 log_dir = /var/log/keystone
 
-
 [database]
 connection = mysql://<%= node['keystone']['db_user'] %>:<%= node['keystone']['db_pass'] %>@<%= node['keystone']['host_ip'] %>/<%= node['keystone']['db_name'] %>
 

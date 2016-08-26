@@ -1,0 +1,98 @@
+{
+  "name": "cpph",
+  "description": "The CPPH PDC by HealthSeq",
+  "cookbook_versions": {},
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "override_attributes": {
+    "ntp": {
+      "server1": "10.0.2.2",
+      "server2": "10.0.2.3",
+      "server3": "10.0.2.254"
+    },
+    "mysql-server": {
+      "passwd": "",
+      "host": "mysql-igsb.osdc.io"
+    },
+    "rabbitmq": {
+      "user": "openstack",
+      "passwd": "healthseq"
+    },
+    "keystone": {
+      "host_ip": "10.0.2.13",
+      "management_ip": "10.1.0.13",
+      "db_name": "keystone",
+      "db_user": "keystone",
+      "db_pass": "healthseq",
+      "os_token": "healthseq",
+      "endpoint_user": "admin",
+      "endpoint_pass": "healthseq",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin"
+    },
+    "glance": {
+      "host_ip": "10.0.2.13",
+      "management_ip": "10.1.0.13",
+      "db_name": "glance",
+      "db_user": "glance",
+      "db_pass": "healthseq",
+      "endpoint_user": "admin",
+      "endpoint_pass": "healthseq",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin"
+    },
+    "cinder": {
+      "host_ip": "10.0.2.13",
+      "management_ip": "10.1.0.13",
+      "db_name": "cinder",
+      "db_user": "cinder",
+      "db_pass": "healthseq",
+      "endpoint_user": "admin",
+      "endpoint_pass": "healthseq",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin"
+    },
+    "nova": {
+      "host_ip": "10.0.2.13",
+      "management_ip": "10.1.0.13",
+      "db_name": "cinder",
+      "db_user": "cinder",
+      "db_pass": "healthseq",
+      "endpoint_user": "admin",
+      "endpoint_pass": "healthseq",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin",
+      "flat_interface": "bond0",
+      "public_interface": "bond0.3526",
+      "flat_network_bridge": "virbr1"
+    },
+    "telemetry": {
+      "host_ip": "10.0.2.13",
+      "management_ip": "10.1.0.13",
+      "db_name": "cinder",
+      "db_user": "cinder",
+      "db_pass": "healthseq",
+      "endpoint_user": "admin",
+      "endpoint_pass": "healthseq"
+    },
+     "dashboard": {
+      "openstack_host": "10.0.2.13"
+    },
+      "openstack-prep": {
+      "mysql_root_user": "root",
+      "mysql_root_pass": "healthseq",
+      "keystone_db_name": "keystone",
+      "keystone_db_user": "keystone",
+      "keystone_db_pass": "healthseq",
+      "glance_db_name": "glance",
+      "glance_db_user": "glance",
+      "glance_db_pass": "healtseq",
+      "novacompute_db_name": "nova",
+      "novacompute_db_user": "nova",
+      "novacompute_db_pass": "healthseq",
+      "cinder_db_name": "cinder",
+      "cinder_db_user": "cinder",
+      "cinder_db_pass": "healthseq"
+    }
+  }
+}

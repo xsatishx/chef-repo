@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: mysql-server
+# Cookbook Name:: rabbitmq
 # Recipe:: default
 #
 # Copyright 2016, HealthSeq Asia Pvt. Ltd.
@@ -7,5 +7,5 @@
 # All rights reserved - Do Not Redistribute
 #
 
-default['mysql-server']['passwd'] = 'healthseq'
-default['mysql-server']['host'] = 'devcontroller'
+default['rabbitmq']['passwd'] = 'healthseq'
+default['rabbitmq']['user'] = 'openstack'

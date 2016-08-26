@@ -13,3 +13,11 @@ template '/root/scripts/createdb.sh' do
   group 'root'
   mode '0644'
 end
+
+bash 'Create-all-database' do
+  user 'root'
+  cwd '/root/scripts'
+  code <<-EOH
+    sh createdb.sh
+  EOH
+end
