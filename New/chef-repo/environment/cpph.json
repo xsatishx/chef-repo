@@ -5,6 +5,11 @@
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "override_attributes": {
+     "tester": {
+      "name": "satish",
+      "age": 31,
+      "country": "India"
+    },
     "ntp": {
       "server1": "10.0.2.2",
       "server2": "10.0.2.3",
