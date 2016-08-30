@@ -1,0 +1,8 @@
+ mysql_secure_installation  <<EOF
+   <%= node['mysql-server']['passwd'] %>
+    n 
+    y 
+    y
+    y
+    y
+	EOF

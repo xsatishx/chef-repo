@@ -2,9 +2,9 @@ echo "Creating Keystone Service..."
 openstack service create --name keystone --description "OpenStack Identity" identity
     
 echo "Creating Keystone endpoints..."
-openstack endpoint create --region RegionOne identity public http://"<%= node['keystone']['host_ip'] %>":5000/v2.0
-openstack endpoint create --region RegionOne identity internal http://"<%= node['keystone']['host_ip'] %>":5000/v2.0
-openstack endpoint create --region RegionOne identity admin http://"<%= node['keystone']['host_ip'] %>":35357/v2.0
+openstack endpoint create --region RegionOne identity public http://<%= node['keystone']['host_ip'] %>:5000/v2.0
+openstack endpoint create --region RegionOne identity internal http://<%= node['keystone']['host_ip'] %>:5000/v2.0
+openstack endpoint create --region RegionOne identity admin http://<%= node['keystone']['host_ip'] %>:35357/v2.0
 
 #Create projects, users and roles
 echo "Creating keystone admin project"

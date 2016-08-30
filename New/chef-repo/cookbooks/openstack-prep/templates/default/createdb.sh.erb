@@ -1,21 +1,18 @@
-
-
-
 mysql -u <%= node['openstack_prep']['mysql_root_user'] %> -p<%= node['openstack_prep']['mysql_root_pass'] %> <<MYSQL_SCRIPT
 
-CREATE DATABASE <%= node['openstack_prep']['keystone_db_name'] %>;
+CREATE DATABASE IF NOT EXISTS <%= node['openstack_prep']['keystone_db_name'] %>;
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['keystone_db_name'] %>.* TO "<%= node['openstack_prep']['keystone_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['keystone_db_pass'] %>";
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['keystone_db_name'] %>.* TO "<%= node['openstack_prep']['keystone_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['keystone_db_pass'] %>";
 
-CREATE DATABASE <%= node['openstack_prep']['glance_db_name'] %>;
+CREATE DATABASE IF NOT EXISTS <%= node['openstack_prep']['glance_db_name'] %>;
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['glance_db_name'] %>.* TO "<%= node['openstack_prep']['glance_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['glance_db_pass'] %>";
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['glance_db_name'] %>.* TO "<%= node['openstack_prep']['glance_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['glance_db_pass'] %>";
 
-CREATE DATABASE <%= node['openstack_prep']['novacompute_db_name'] %>;
+CREATE DATABASE IF NOT EXISTS <%= node['openstack_prep']['novacompute_db_name'] %>;
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['novacompute_db_name'] %>.* TO "<%= node['openstack_prep']['novacompute_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['novacompute_db_pass'] %>";
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['novacompute_db_name'] %>.* TO "<%= node['openstack_prep']['novacompute_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['novacompute_db_pass'] %>";
 
-CREATE DATABASE <%= node['openstack_prep']['cinder_db_name'] %>;
+CREATE DATABASE IF NOT EXISTS <%= node['openstack_prep']['cinder_db_name'] %>;
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['cinder_db_name'] %>.* TO "<%= node['openstack_prep']['cinder_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['cinder_db_pass'] %>";
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['cinder_db_name'] %>.* TO "<%= node['openstack_prep']['cinder_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['cinder_db_pass'] %>";
 

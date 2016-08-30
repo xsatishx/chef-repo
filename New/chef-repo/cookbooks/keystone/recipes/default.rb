@@ -38,7 +38,7 @@ package 'apache2' do
   action :upgrade
 end
 
-package 'libapache2-mod-wgsi' do
+package 'libapache2-mod-wsgi' do
   action :install
   action :upgrade
 end
@@ -53,7 +53,6 @@ package 'python-mysqldb' do
   action :upgrade
 end
 
-
 package 'python-memcache' do
   action :install
   action :upgrade
@@ -66,29 +65,43 @@ template "/etc/keystone/keystone.conf" do
   source "keystone.conf.erb"
 end
 
-#Populate the database
-bash 'Populate-keystone-database' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-    su -s /bin/sh -c "keystone-manage db_sync" keystone
-  EOH
-end
-
-# Alternative to above command
-# cmdString = "su -s /bin/sh -c 'keystone-manage db_sync' keystone"
-#   Chef::Log.info("CMD> "+cmdString)
-#   IO.popen(cmdString).each do |line|
-#   Chef::Log.info("OUT> "+line.chomp)
-# end
-
-
-service 'keystone' do
+service 'mysql' do
   supports :status => true, :restart => true, :reload => true
   action [:enable]
 end
 
+
+#Populate the database
+# bash 'Populate-keystone-database' do
+#   user 'root'
+#   cwd '/tmp'
+#   code <<-EOH
+#     su -s /bin/sh -c "keystone-manage db_sync" keystone
+#   EOH
+# end
+
+# Alternative to above command
+
+cmdString = "su -s /bin/sh -c 'keystone-manage db_sync' keystone"
+  Chef::Log.info("CMD> "+cmdString)
+  IO.popen(cmdString).each do |line|
+  Chef::Log.info("OUT> "+line.chomp)
+end
+
+
+# service 'keystone' do
+#   supports :status => true, :restart => true, :reload => true
+#   action [:enable]
+# end
+
 ### PLEASE DO THE STEP IN TODO 3 #######################
+bash 'add-server-name-to-apacheconf' do
+  user 'root'
+  cwd '/etc/apache2'
+  code <<-EOH
+   grep -q -F "ServerName  #{node['hostname']}" /etc/apache2/apache2.conf || echo "ServerName  #{node['hostname']}" >> /etc/apache2/apache2.conf
+  EOH
+end
 
 cookbook_file '/etc/apache2/sites-available/wsgi-keystone.conf' do
   source 'wsgi-keystone.conf'
@@ -137,6 +150,11 @@ template '/root/scripts/keystone_endpoints.sh' do
   owner 'root'
   group 'root'
   mode '0644'
+end
+
+service 'keystone' do
+  supports :status => true, :restart => true, :reload => true
+  action [:start, :enable]
 end
 
 bash 'endpoint creation...' do
