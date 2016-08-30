@@ -12,17 +12,17 @@ template '/root/scripts/glance_endpoints.sh' do
   source 'glance_endpoints.sh.erb'
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0755'
 end
 
-bash 'set-glance-endpoints' do
-  user 'root'
-  cwd '/root/scripts'
-  code <<-EOH
-    source creds
-    sh glance_endpoints.sh
-  EOH
-end
+# bash 'set-glance-endpoints' do
+#   user 'root'
+#   cwd '/root/scripts'
+#   code <<-EOH
+#     source creds
+#     sh glance_endpoints.sh
+#   EOH
+# end
 
 package 'glance' do
   action :install
@@ -32,8 +32,8 @@ package 'python-glanceclient' do
   action :install
 end
 
-template '/etc/glance/glance_api.conf' do
-  source 'glance_api.conf.erb'
+template '/etc/glance/glance-api.conf' do
+  source 'glance-api.conf.erb'
   owner 'glance'
   group 'glance'
   mode '0644'
@@ -62,8 +62,8 @@ bash 'remove-sqlite-db' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-    if [ -f /var/lib/glance/glance.sqlite ] then
+   
        rm -f /var/lib/glance/glance.sqlite
-    fi
+ 
   EOH
 end

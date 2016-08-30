@@ -21,11 +21,3 @@ bash 'Create-all-database' do
     sh createdb.sh
   EOH
 end
-
-bash 'pip upgrade' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-     sudo pip install --upgrade python-openstackclient
-  EOH
-end

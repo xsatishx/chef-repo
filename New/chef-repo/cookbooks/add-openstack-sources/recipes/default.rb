@@ -30,10 +30,12 @@ bash 'add-apt-repo' do
   EOH
 end
 
-include_recipe 'apt'
-
-package 'python-openstackclient' do
-  action :install
+bash 'apt-update-updgrade' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    apt-get update -y && apt-get dist-upgrade -y 
+  EOH
 end
 
 # To store all our scripts and creds files
@@ -44,8 +46,14 @@ directory '/root/scripts' do
   action :create
 end
 
-for packages in [ "wget", "python-dev", "python-pip", "git", "wget", "curl", "apache2"] do
+for packages in [ "wget", "python-dev", "python-setuptools", "python-pip", "git", "wget", "curl", "apache2"] do
   package packages do
     action :install
   end
 end
+
+package 'python-openstackclient' do
+  action :install
+  action :upgrade
+end
+

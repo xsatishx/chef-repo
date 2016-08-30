@@ -7,6 +7,17 @@
 # All rights reserved - Do Not Redistribute
 #
 
-puts "$$$$$$$$$$$$$$$$$$$$$This is a test run$$$$$$$$$$$$$$$$$$$"
 
-puts "Hello #{node['tester']['name']}"
+bash 'test' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+  ls -lrt
+  EOH
+end
+
+ruby_block 'reload client config' do
+  block do
+    system ("ls -lrt")
+  end
+end

@@ -67,10 +67,10 @@ end
 
 service 'mysql' do
   supports :status => true, :restart => true, :reload => true
-  action [:enable]
+  action [:enable, :start]
 end
 
-
+#
 #Populate the database
 # bash 'Populate-keystone-database' do
 #   user 'root'
@@ -82,7 +82,7 @@ end
 
 # Alternative to above command
 
-cmdString = "su -s /bin/sh -c 'keystone-manage db_sync' keystone"
+cmdString = "service mysql restart; su -s /bin/sh -c 'keystone-manage db_sync' keystone"
   Chef::Log.info("CMD> "+cmdString)
   IO.popen(cmdString).each do |line|
   Chef::Log.info("OUT> "+line.chomp)
@@ -157,12 +157,26 @@ service 'keystone' do
   action [:start, :enable]
 end
 
-bash 'endpoint creation...' do
-  user 'root'
-  cwd '/root/scripts/'
-  code <<-EOH
-    source initial_creds
-    sh keystone_endpoints.sh
-  EOH
+  service 'mysql' do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable, :start]
 end
+
+# bash 'endpoint creation...' do
+#   user 'root'
+#   cwd '/root/scripts/'
+#   not_if { node.attribute?('keystone_init') }
+#   code <<-EOH
+#     source initial_creds
+#     sh keystone_endpoints.sh
+#   EOH
+# end
+
+# ruby_block "keystone_init" do
+#   block do
+#     node.set['keystone_init'] = true
+#     node.save
+#   end
+#   action :nothing
+# end
 
