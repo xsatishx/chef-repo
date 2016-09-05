@@ -9,13 +9,6 @@
 
 # TO DO: Modify files/mysql-seed with the password - cant template (bug)
 
-bash "update-apt-repository" do
-  user "root"
-  code <<-EOH
-  apt-get update
-  EOH
-end
-
 cookbook_file 'mysql-seed' do
   source 'mysql-seed'
   owner 'root'
@@ -23,11 +16,20 @@ cookbook_file 'mysql-seed' do
   mode '0644'
 end
 
-
 package "mysql-server-5.5" do
   action :install
   response_file 'mysql-seed'
   notifies :create, "template[/etc/mysql/conf.d/mysqld_openstack.cnf]", :immediately
+end
+
+package 'python-pymysql' do
+  action :install
+  action :upgrade
+end
+
+package 'python-mysqldb' do
+  action :install
+  action :upgrade
 end
 
 template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
@@ -38,9 +40,8 @@ template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
 end
 
 service "mysql" do
-  provider Chef::Provider::Service::Init::Debian
   supports :status => true, :restart => true, :stop => true, :start => true
-  action [:enable]
+  action [:start,:enable]
 end
 
 template '/tmp/secure.sh' do
@@ -60,5 +61,5 @@ end
 
 service 'mysql' do
   supports :status => true, :restart => true, :reload => true
-  action [:enable]
+  action [:start, :enable]
 end

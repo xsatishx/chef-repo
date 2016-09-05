@@ -22,3 +22,8 @@ bash 'Create-all-database' do
     sh createdb.sh
   EOH
 end
+
+service "mysql" do
+  supports :status => true, :restart => true, :stop => true, :start => true
+  action [:restart]
+end

@@ -41,11 +41,6 @@ package 'memcached' do
   action :upgrade
 end
 
-package 'python-mysqldb' do
-  action :install
-  action :upgrade
-end
-
 package 'python-memcache' do
   action :install
   action :upgrade
@@ -56,14 +51,6 @@ template "/etc/keystone/keystone.conf" do
   owner "root"
   group "root"
   source "keystone.conf.erb"
-end
-
-bash 'mysql restrt' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-    service mysql restart
-  EOH
 end
 
 # This Step may not  work always -better do it manually 
