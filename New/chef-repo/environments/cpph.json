@@ -17,15 +17,15 @@
     },
     "mysql-server": {
       "passwd": "healthseq",
-      "host": "devcontrtest"
+      "host": "dev-test-controller"
     },
     "rabbitmq": {
       "user": "openstack",
       "passwd": "healthseq"
     },
     "keystone": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "dev-test-controller",
+      "management_ip": "dev-test-controller",
       "db_name": "keystone",
       "db_user": "keystone",
       "db_pass": "healthseq",
@@ -36,8 +36,8 @@
       "endpoint_tenant": "admin"
     },
     "glance": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "dev-test-controller",
+      "management_ip": "dev-test-controller",
       "db_name": "glance",
       "db_user": "glance",
       "db_pass": "healthseq",
@@ -47,8 +47,8 @@
       "endpoint_tenant": "admin"
     },
     "cinder": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "dev-test-controller",
+      "management_ip": "dev-test-controller",
       "db_name": "cinder",
       "db_user": "cinder",
       "db_pass": "healthseq",
@@ -58,8 +58,8 @@
       "endpoint_tenant": "admin"
     },
     "nova": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "dev-test-controller",
+      "management_ip": "dev-test-controller",
       "db_name": "cinder",
       "db_user": "cinder",
       "db_pass": "healthseq",
@@ -72,8 +72,8 @@
       "flat_network_bridge": "virbr1"
     },
     "telemetry": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "dev-test-controller",
+      "management_ip": "dev-test-controller",
       "db_name": "cinder",
       "db_user": "cinder",
       "db_pass": "healthseq",
@@ -81,7 +81,7 @@
       "endpoint_pass": "healthseq"
     },
      "dashboard": {
-      "openstack_host": "devcontrtest"
+      "openstack_host": "dev-test-controller"
     },
       "openstack_prep": {
       "mysql_root_user": "root",

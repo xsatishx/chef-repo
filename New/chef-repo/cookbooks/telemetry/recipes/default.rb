@@ -7,10 +7,6 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-- apt-get install mongodb-server mongodb-clients python-pymongo -y
-- add the following to /etc/mongodb.conf
-bind_ip = 10.0.2.13
-smallfiles = true
 
 package 'mongodb-server' do
   action :install

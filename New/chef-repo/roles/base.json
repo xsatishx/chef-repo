@@ -1,0 +1,17 @@
+{
+  "name": "base",
+  "default_attributes": {
+    "ntp": {
+      "servers": [
+        "pxeboot"
+      ]
+    }
+  },
+  "run_list": [
+    "recipe[apt]",
+    "recipe[add-openstack-sources]",
+    "recipe[ntp]",
+    "recipe[rabbitmq]",
+    "recipe[mysql-server]"
+  ]
+}

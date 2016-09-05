@@ -13,6 +13,14 @@ package 'ntp' do
   action :install
 end
 
+bash 'stop ntp service' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    service ntp stop
+  EOH
+end
+
 template '/etc/ntp.conf' do
   source 'ntp.conf.erb'
   owner 'root'
