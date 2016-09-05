@@ -41,28 +41,33 @@ template '/etc/cinder/cinder.conf' do
   mode '0644'
 end
 
-bash 'set-cinder-endpoints' do
-  user 'root'
-  cwd '/root/scripts'
-  code <<-EOH
-    source creds
-    sh cinder_endpoints.sh
-  EOH
+template '/root/scripts/cinder_endpoints.sh' do
+  source 'cinder_endpoints.sh.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
+
+# Run Manually
+
+# bash 'set-cinder-endpoints' do
+#   user 'root'
+#   cwd '/root/scripts'
+#   code <<-EOH
+#     source creds
+#     sh cinder_endpoints.sh
+#   EOH
+# end
 
 #Populate the database
-bash 'Populate-cinder-database' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-    su -s /bin/sh -c "cinder-manage db_sync" cinder
-  EOH
-end
+# bash 'Populate-cinder-database' do
+#   user 'root'
+#   cwd '/tmp'
+#   code <<-EOH
+#     su -s /bin/sh -c "cinder-manage db sync" cinder
+#   EOH
+# end
 
-service 'nova-api' do
-  supports :status => true, :restart => true, :reload => true
-  action [:enable]
-end
 
 service 'cinder-scheduler' do
   supports :status => true, :restart => true, :reload => true

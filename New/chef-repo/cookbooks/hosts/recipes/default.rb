@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 # Copyright 2016 , HealthSeq Asia Pvt. Ltd.
-#
+# Maintainer Satish Balakrishnan <satish@healthseq.com>
 # All rights reserved - Do Not Redistribute
 #
 # TO DO : Change the template for hosts.erb

@@ -14,8 +14,9 @@ run list
 3) openssh
 4) hosts
 5) ntp
-6) openstack-prep
 7) rabbitmq
 8) mysql-server
-9) keystone
+6) openstack-prep
+9) keystone   - manual step db sync &  endpoint creation then
+....
 10) Glance

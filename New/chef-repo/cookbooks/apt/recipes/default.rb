@@ -22,7 +22,6 @@
 # executed. However, they _must_ still be present in the resource collection
 # or other cookbooks which notify these resources will fail on non-apt-enabled
 # systems.
-
 file '/var/lib/apt/periodic/update-success-stamp' do
   owner 'root'
   group 'root'

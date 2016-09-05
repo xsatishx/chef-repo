@@ -3,20 +3,10 @@
 # Recipe:: default
 #
 # Copyright 2016, HealthSeq Asia Pvt. Ltd.
-# Maintainer <satish@healthseq.com>
+# Maintainer Satish Balakrishnan <satish@healthseq.com>
 #
 # All rights reserved - Do Not Redistribute
 #
-# TO DO : Change the ntp servers under attributes.
-#
-# Cookbook Name:: add-openstack-sources
-# Recipe:: default
-#
-# Copyright 2016, HealthSeq Asia Pvt. Ltd.
-# Maintainer <satish@healthseq.com>
-# All rights reserved - Do Not Redistribute
-#
-
 
 package 'software-properties-common' do
   action :install
@@ -27,6 +17,7 @@ bash 'add-apt-repo' do
   cwd '/tmp'
   code <<-EOH
     add-apt-repository cloud-archive:liberty
+    apt-key update
   EOH
 end
 

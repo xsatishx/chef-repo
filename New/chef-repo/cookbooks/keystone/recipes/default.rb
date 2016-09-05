@@ -8,14 +8,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# TO DO - Change the Attributes
-# TO DO - Check if the single quotes in templates gets resolved , then uncomment the execution part below.
-# ###########TO DO - Edit the /etc/apache2/apache2.conf file and configure the ServerName option to reference the controller node:###########################
-# Check attribute node ipaddress resolvation?
-# ServerName controller needs to be added to apache 2
-
-
-# Step to create keystone db is in openstack-prep cookbook
+# MANUAL STEPS :  dbsync and endpoint creation
 
 # Prevent keystone service from starting automatically after installation
 bash 'prevent-keystone-service-startup' do
@@ -65,12 +58,15 @@ template "/etc/keystone/keystone.conf" do
   source "keystone.conf.erb"
 end
 
-service 'mysql' do
-  supports :status => true, :restart => true, :reload => true
-  action [:enable, :start]
+bash 'mysql restrt' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    service mysql restart
+  EOH
 end
 
-#
+# This Step may not  work always -better do it manually 
 #Populate the database
 # bash 'Populate-keystone-database' do
 #   user 'root'
@@ -80,21 +76,15 @@ end
 #   EOH
 # end
 
-# Alternative to above command
+#  Alternative to above command
 
-cmdString = "service mysql restart; su -s /bin/sh -c 'keystone-manage db_sync' keystone"
-  Chef::Log.info("CMD> "+cmdString)
-  IO.popen(cmdString).each do |line|
-  Chef::Log.info("OUT> "+line.chomp)
-end
-
-
-# service 'keystone' do
-#   supports :status => true, :restart => true, :reload => true
-#   action [:enable]
+# cmdString = "su -s /bin/sh -c 'keystone-manage db_sync' keystone"
+#   Chef::Log.info("CMD> "+cmdString)
+#   IO.popen(cmdString).each do |line|
+#   Chef::Log.info("OUT> "+line.chomp)
 # end
 
-### PLEASE DO THE STEP IN TODO 3 #######################
+
 bash 'add-server-name-to-apacheconf' do
   user 'root'
   cwd '/etc/apache2'

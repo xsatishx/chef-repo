@@ -2,7 +2,8 @@
 # Cookbook Name:: openstack-prep
 # Recipe:: default
 #
-# Copyright 2016, YOUR_COMPANY_NAME
+# Copyright 2016, HealthSeq Asia Pvt. Ltd.
+# Maintainer Satish Balakrishnan <satish@healthseq.com>
 #
 # All rights reserved - Do Not Redistribute
 #

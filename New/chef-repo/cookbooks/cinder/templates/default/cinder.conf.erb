@@ -15,7 +15,7 @@ rpc_backend = rabbit
 verbose = True
 auth_strategy = keystone
 enabled_backends = ceph
-# for telemetry
+
 notification_driver = messagingv2
 
 
@@ -32,15 +32,9 @@ rbd_user = cinder
 rbd_secret_uuid = 1dd5820a-e6d6-4bdd-b490-1e935b84d2e2
 
 [database]
-connection = mysql://<%= node['cinder']['db_user'] %>:<%= node['cinder']['db_pass'] %>@<%= node['cinder']['host_ip']/<%= node['cinder']['db_name']
-
+connection = mysql://<%= node['cinder']['db_user'] %>:<%= node['cinder']['db_pass'] %>@<%= node['cinder']['host_ip'] %>/<%= node['cinder']['db_name'] %>
 
 [keystone_authtoken]
-#auth_uri = http://<%= node['cinder']['host_ip'] %>:5000/v2.0
-#identity_uri = http://<%= node['cinder']['host_ip'] %>:35357
-#admin_tenant_name = service
-#admin_user = cinder
-#admin_password = service_pass
 auth_uri = http://<%= node['cinder']['host_ip'] %>:5000
 auth_url = http://<%= node['cinder']['host_ip'] %>:35357
 auth_plugin = password

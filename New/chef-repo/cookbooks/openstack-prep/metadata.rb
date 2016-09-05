@@ -1,6 +1,6 @@
 name             'openstack-prep'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'HealthSeq Asia PVt. Ltd.'
+maintainer_email 'satish@healthseq.com'
 license          'All rights reserved'
 description      'Installs/Configures openstack-prep'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

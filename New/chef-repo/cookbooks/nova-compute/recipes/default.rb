@@ -2,7 +2,7 @@
 # Cookbook Name:: nova-compute
 # Recipe:: default
 #
-# Copyright 2016, HealthSe Asia Pvt. Ltd.
+# Copyright 2016, HealthSeq Asia Pvt. Ltd.
 # Maintainer Satish Balakrishnan <satish@healthseq.com>
 #
 # All rights reserved - Do Not Redistribute

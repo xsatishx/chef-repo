@@ -7,6 +7,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+# # MANUAL STEPS :  dbsync and endpoint creation
 
 template '/root/scripts/glance_endpoints.sh' do
   source 'glance_endpoints.sh.erb'
@@ -15,6 +16,7 @@ template '/root/scripts/glance_endpoints.sh' do
   mode '0755'
 end
 
+# Run Manually
 # bash 'set-glance-endpoints' do
 #   user 'root'
 #   cwd '/root/scripts'
@@ -39,14 +41,14 @@ template '/etc/glance/glance-api.conf' do
   mode '0644'
 end
 
-#Populate the database
-bash 'Populate-glance-database' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-    su -s /bin/sh -c "glance-manage db_sync" glance
-  EOH
-end
+#Populate the database - Run Manually
+# bash 'Populate-glance-database' do
+#   user 'root'
+#   cwd '/tmp'
+#   code <<-EOH
+#     su -s /bin/sh -c "glance-manage db_sync" glance
+#   EOH
+# end
 
 service 'glance-registry' do
   supports :status => true, :restart => true, :reload => true
