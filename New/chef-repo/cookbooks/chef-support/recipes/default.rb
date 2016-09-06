@@ -38,3 +38,10 @@ directory '/var/log/radosgw' do
   mode '0755'
   action :create
 end
+
+directory '/var/log/ceph' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
