@@ -25,10 +25,6 @@ package 'cinder-volume' do
   action :install
 end
 
-package 'python-mysqldb' do
-   action :install
- end
-
 package 'tgt' do
   action :install
 end

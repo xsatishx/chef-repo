@@ -41,6 +41,13 @@ template '/etc/glance/glance-api.conf' do
   mode '0644'
 end
 
+template '/etc/glance/glance-registry.conf' do
+  source 'glance-registry.conf.erb'
+  owner 'glance'
+  group 'glance'
+  mode '0644'
+end
+
 #Populate the database - Run Manually
 # bash 'Populate-glance-database' do
 #   user 'root'
@@ -64,8 +71,6 @@ bash 'remove-sqlite-db' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-   
-       rm -f /var/lib/glance/glance.sqlite
- 
-  EOH
+         rm -f /var/lib/glance/glance.sqlite
+   EOH
 end

@@ -20,6 +20,7 @@
       "host": "dev-test-controller"
     },
     "rabbitmq": {
+      "host": "dev-test-controller",
       "user": "openstack",
       "passwd": "healthseq"
     },
@@ -55,7 +56,8 @@
       "endpoint_user": "cinder",
       "endpoint_pass": "healthseq",
       "endpoint_project": "admin",
-      "endpoint_tenant": "admin"
+      "endpoint_tenant": "admin",
+      "rbd_secret_uuid": "1dd5820a-e6d6-4bdd-b490-1e935b84d2e2"
     },
     "nova": {
       "host_ip": "dev-test-controller",

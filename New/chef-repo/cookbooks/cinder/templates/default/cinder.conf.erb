@@ -29,7 +29,7 @@ rbd_store_chunk_size = 4
 rados_connect_timeout = -1
 glance_api_version = 2
 rbd_user = cinder
-rbd_secret_uuid = 1dd5820a-e6d6-4bdd-b490-1e935b84d2e2
+rbd_secret_uuid = <%= node['cinder']['rbd_secret_uuid'] %>
 
 [database]
 connection = mysql://<%= node['cinder']['db_user'] %>:<%= node['cinder']['db_pass'] %>@<%= node['cinder']['host_ip'] %>/<%= node['cinder']['db_name'] %>
@@ -46,6 +46,6 @@ password = <%= node['cinder']['db_pass'] %>
 
 
 [oslo_messaging_rabbit]
-rabbit_host = <%= node['cinder']['host_ip'] %>
-rabbit_userid = openstack
-rabbit_password = healthseq
+rabbit_host = <%= node['rabbitmq']['host_ip'] %>
+rabbit_userid = <%= node['rabbitmq']['user'] %>
+rabbit_password = <%= node['rabbitmq']['passwd'] %>

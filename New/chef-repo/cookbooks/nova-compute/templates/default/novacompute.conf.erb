@@ -62,10 +62,9 @@ username = <%= node['nova-compute']['db_user'] %>
 password = <%= node['nova-compute']['db_pass'] %>
 
 [oslo_messaging_rabbit]
-#rabbit_host = 10.1.0.13
-rabbit_host = <%= node['nova-compute']['host_ip'] %>
-rabbit_userid = openstack
-rabbit_password = healthseq
+rabbit_host = <%= node['rabbitmq']['host_ip'] %>
+rabbit_userid = <%= node['rabbitmq']['user'] %>
+rabbit_password = <%= node['rabbitmq']['passwd'] %>
 
 
 [glance]

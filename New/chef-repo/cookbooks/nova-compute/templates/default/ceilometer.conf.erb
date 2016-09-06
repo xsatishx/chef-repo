@@ -15,10 +15,10 @@ username = <%= node['telemetry']['db_user'] %>
 password = <%= node['telemetry']['db_pass'] %>
 
 [oslo_messaging_rabbit]
+rabbit_host = <%= node['rabbitmq']['host_ip'] %>
+rabbit_userid = <%= node['rabbitmq']['user'] %>
+rabbit_password = <%= node['rabbitmq']['passwd'] %>
 
-rabbit_host = <%= node['telemetry']['host_ip'] %>
-rabbit_userid = openstack
-rabbit_password = rabbit
 
 [service_credentials]
 

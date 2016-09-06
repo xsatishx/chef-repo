@@ -31,3 +31,10 @@ template "/etc/sysctl.d/99-fasterdata.es.net.conf" do
   source "99-fasterdata.es.net.conf.erb"
   action :create
 end
+
+directory '/var/log/radosgw' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end

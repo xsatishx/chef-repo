@@ -1,27 +1,10 @@
 
 [DEFAULT]
-verbose = True
-# for telemetry commented the below and added messagingv2
-#notification_driver = noop
 notification_driver = messagingv2
-#default_store = rbd
-show_image_direct_url = True
 rpc_backend = rabbit
 
 [database]
 connection = mysql://<%= node['glance']['db_user'] %>:<%= node['glance']['db_pass'] %>@<%= node['glance']['host_ip'] %>/<%= node['glance']['db_name'] %>
-
-[glance_store]
-
-# default_store = file
-# filesystem_store_datadir = /var/lib/glance/images/
-
-stores = rbd
-default_store = rbd
-rbd_store_pool = images
-rbd_store_user = glance
-rbd_store_ceph_conf = /etc/ceph/ceph.conf
-rbd_store_chunk_size = 8
 
 [keystone_authtoken]
 auth_uri = http://<%= node['glance']['host_ip'] %>:5000
@@ -33,16 +16,11 @@ project_name = service
 username = <%= node['glance']['db_user'] %>
 password = <%= node['glance']['db_pass'] %>
 
-# For telemetry
+
+[paste_deploy]
+flavor = keystone
+
 [oslo_messaging_rabbit]
 rabbit_host = <%= node['rabbitmq']['host_ip'] %>
 rabbit_userid = <%= node['rabbitmq']['user'] %>
 rabbit_password = <%= node['rabbitmq']['passwd'] %>
-
-[paste_deploy]
-
-flavor = keystone
-
-
-
-
