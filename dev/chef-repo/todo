@@ -1,0 +1,18 @@
+TO DO
+
+1) change host_ip and management_ip
+2) Add nova-compute cookbook flat/public and bridge in templates
+3) mysql cookbook change the password in  the file mysql-seed
+
+run list
+1) apt
+2) add-openstack-sources
+3) extraconfigs
+4) hosts
+5) ntp
+6) rabbitmq
+7) mysql-server
+8) openstack-prep
+9) keystone   - manual step db sync &  endpoint creation then
+....
+10) Glance
