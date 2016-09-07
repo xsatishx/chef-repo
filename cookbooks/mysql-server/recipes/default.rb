@@ -9,19 +9,6 @@
 
 # TO DO: Modify files/mysql-seed with the password - cant template (bug)
 
-cookbook_file 'mysql-seed' do
-  source 'mysql-seed'
-  owner 'root'
-  group 'root'
-  mode '0644'
-end
-
-package "mysql-server-5.5" do
-  action :install
-  response_file 'mysql-seed'
-  notifies :create, "template[/etc/mysql/conf.d/mysqld_openstack.cnf]", :immediately
-end
-
 package 'python-pymysql' do
   action :install
   action :upgrade
@@ -32,6 +19,19 @@ package 'python-mysqldb' do
   action :upgrade
 end
 
+cookbook_file 'mysql-seed' do
+  source 'mysql-seed'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+package "mysql-server-5.5" do
+  action :install
+  response_file 'mysql-seed'
+#  notifies :create, "template[/etc/mysql/conf.d/mysqld_openstack.cnf]", :immediately
+end
+
 template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
   source 'mysqld_openstack.cnf.erb'
   owner 'root'
@@ -39,10 +39,10 @@ template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
   mode '0644'
 end
 
-service "mysql" do
-  supports :status => true, :restart => true, :stop => true, :start => true
-  action [:start,:enable]
-end
+ service 'mysql' do
+   supports :status => true, :restart => true, :reload => true
+   action [:restart]
+ end
 
 template '/tmp/secure.sh' do
   source 'secure.sh.erb'

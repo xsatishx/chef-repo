@@ -10,3 +10,4 @@ chef_server_url          "https://dev-chefserver.cpph-nuh.org/organizations/cpph
 cookbook_path             ["#{current_dir}/../../../cookbooks"]
 validator_key            "#{current_dir}/ORGANIZATION_validator.pem"	
 knife[:editor] = "notepad"
+ssl_verify_mode :verify_none

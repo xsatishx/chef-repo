@@ -1,4 +1,3 @@
-
 import os
 
 from django.utils.translation import ugettext_lazy as _
@@ -10,16 +9,9 @@ from openstack_dashboard.settings import HORIZON_CONFIG
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-SITE_BRANDING = "CPPH PDC by HealthSeq Asia Pvt. Ltd."
+SITE_BRANDING = "HealthSeq CPPH cloud"
 SITE_BRANDING_LINK = "http://www.healthseq.com"
 WEBROOT = '/'
-
-OPENSTACK_API_VERSIONS = {
-    "identity": 3,
-    "volume": 2,
-}
-
-OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
 
 LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -35,7 +27,7 @@ CACHES = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 OPENSTACK_HOST = "<%= node['dashboard']['host_ip'] %>"
 OPENSTACK_KEYSTONE_URL = "http://%s:5000/v2.0" % OPENSTACK_HOST
-OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"
+OPENSTACK_KEYSTONE_DEFAULT_ROLE = "admin"
 
 OPENSTACK_KEYSTONE_BACKEND = {
     'name': 'native',
@@ -58,46 +50,20 @@ OPENSTACK_CINDER_FEATURES = {
 
 OPENSTACK_NEUTRON_NETWORK = {
     'enable_router': False,
-    'enable_quotas': False,
+    'enable_quotas': True,
     'enable_ipv6': True,
     'enable_distributed_router': False,
     'enable_ha_router': False,
-    'enable_lb':False,
-    'enable_firewall': False,
-    'enable_vpn': False,
-    'enable_fip_topology_check': False,
-
-    # Neutron can be configured with a default Subnet Pool to be used for IPv4
-    # subnet-allocation. Specify the label you wish to display in the Address
-    # pool selector on the create subnet step if you want to use this feature.
+    'enable_lb': True,
+    'enable_firewall': True,
+    'enable_vpn': True,
+    'enable_fip_topology_check': True,
     'default_ipv4_subnet_pool_label': None,
-
-    # Neutron can be configured with a default Subnet Pool to be used for IPv6
-    # subnet-allocation. Specify the label you wish to display in the Address
-    # pool selector on the create subnet step if you want to use this feature.
-    # You must set this to enable IPv6 Prefix Delegation in a PD-capable
-    # environment.
     'default_ipv6_subnet_pool_label': None,
-
-    # The profile_support option is used to detect if an external router can be
-    # configured via the dashboard. When using specific plugins the
-    # profile_support can be turned on if needed.
     'profile_support': None,
-    #'profile_support': 'cisco',
-
-    # Set which provider network types are supported. Only the network types
-    # in this list will be available to choose from when creating a network.
-    # Network types include local, flat, vlan, gre, and vxlan.
     'supported_provider_types': ['*'],
-
-    # Set which VNIC types are supported for port binding. Only the VNIC
-    # types in this list will be available to choose from when creating a
-    # port.
-    # VNIC types include 'normal', 'macvtap' and 'direct'.
-    # Set to empty list or None to disable VNIC type selection.
     'supported_vnic_types': ['*']
 }
-
 
 IMAGE_CUSTOM_PROPERTY_TITLES = {
     "architecture": _("Architecture"),
@@ -109,24 +75,15 @@ IMAGE_CUSTOM_PROPERTY_TITLES = {
 }
 
 IMAGE_RESERVED_CUSTOM_PROPERTIES = []
-
-
-
 API_RESULT_LIMIT = 1000
 API_RESULT_PAGE_SIZE = 20
-
 SWIFT_FILE_TRANSFER_CHUNK_SIZE = 512 * 1024
-
 DROPDOWN_MAX_ITEMS = 30
-
 TIME_ZONE = "UTC"
+
 
 LOGGING = {
     'version': 1,
-    # When set to True this will disable all logging except
-    # for loggers specified in this configuration dictionary. Note that
-    # if nothing is specified here and disable_existing_loggers is True,
-    # django.db.backends will still log unless it is disabled explicitly.
     'disable_existing_loggers': False,
     'handlers': {
         'null': {
@@ -134,14 +91,11 @@ LOGGING = {
             'class': 'django.utils.log.NullHandler',
         },
         'console': {
-            # Set the level to "DEBUG" for verbose output logging.
             'level': 'INFO',
             'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
-        # Logging from django.db.backends is VERY verbose, send to null
-        # by default.
         'django.db.backends': {
             'handlers': ['null'],
             'propagate': False,
@@ -343,8 +297,9 @@ try:
 except ImportError:
   pass
 
-WEBROOT='/dashboard/'
+WEBROOT='/horizon/'
 
-ALLOWED_HOSTS = ['*', ]
+ALLOWED_HOSTS = '*'
 
 COMPRESS_OFFLINE = True
+

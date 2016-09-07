@@ -11,3 +11,4 @@ cookbook_path             ["#{current_dir}/../../../cookbooks"]
 validator_key            "#{current_dir}/validator.pem"	
 knife[:editor] = "notepad"
 ssl_verify_mode :verify_none
+verify_api_cert false
