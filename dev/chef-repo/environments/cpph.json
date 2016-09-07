@@ -20,7 +20,7 @@
       "host": "dev-test1-controller"
     },
     "rabbitmq": {
-      "host": "dev-test1-controller",
+      "host_ip": "dev-test1-controller",
       "user": "openstack",
       "passwd": "healthseq"
     },
@@ -59,11 +59,11 @@
       "endpoint_tenant": "admin",
       "rbd_secret_uuid": "1dd5820a-e6d6-4bdd-b490-1e935b84d2e2"
     },
-    "nova": {
+    "nova-compute": {
       "host_ip": "dev-test1-controller",
       "management_ip": "dev-test1-controller",
-      "db_name": "cinder",
-      "db_user": "cinder",
+      "db_name": "nova",
+      "db_user": "nova",
       "db_pass": "healthseq",
       "endpoint_user": "nova",
       "endpoint_pass": "healthseq",
@@ -76,14 +76,14 @@
     "telemetry": {
       "host_ip": "dev-test1-controller",
       "management_ip": "dev-test1-controller",
-      "db_name": "cinder",
-      "db_user": "cinder",
+      "db_name": "ceilometer",
+      "db_user": "ceilometer",
       "db_pass": "healthseq",
       "endpoint_user": "ceilometer",
       "endpoint_pass": "healthseq"
     },
      "dashboard": {
-      "openstack_host": "dev-test1-controller"
+      "host_ip": "dev-test1-controller"
     },
       "openstack_prep": {
       "mysql_root_user": "root",
