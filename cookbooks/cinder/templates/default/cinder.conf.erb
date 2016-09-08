@@ -1,7 +1,7 @@
 
 [DEFAULT]
 rootwrap_config = /etc/cinder/rootwrap.conf
-api_paste_confg = /etc/cinder/api-paste.ini
+api_paste_config = /etc/cinder/api-paste.ini
 iscsi_helper = tgtadm
 volume_name_template = volume-%s
 volume_group = cinder-volumes
@@ -10,14 +10,15 @@ auth_strategy = keystone
 state_path = /var/lib/cinder
 lock_path = /var/lock/cinder
 volumes_dir = /var/lib/cinder/volumes
-my_ip = <%= node['cinder']['management_ip'] %>
+my_ip = <%= node['ipaddress'] %>
 rpc_backend = rabbit
 verbose = True
 auth_strategy = keystone
 enabled_backends = ceph
-
 notification_driver = messagingv2
 
+#Keep Connections under controll (chicago)
+#https://bugs.launchpad.net/nova/+bug/1225655 rpc_conn_pool_size=100 rpc_response_timeout=200 rabbit_retry_interval=5 rabbit_retry_backoff=5
 
 [ceph]
 volume_driver = cinder.volume.drivers.rbd.RBDDriver

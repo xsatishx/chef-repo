@@ -1,0 +1,36 @@
+1) Base role
+    "recipe[apt]",
+    
+    "recipe[add-openstack-sources]",
+    
+    "recipe[ntp]",
+    
+    "recipe[rabbitmq]",
+    
+    "recipe[extraconfigs]",
+    
+    "recipe[hosts]"
+
+2) reboot system
+
+3) mysql-server
+	check for access 
+
+4) openstack-prep
+
+5) keystone
+	endpoint and sync - manual
+
+6) Glance
+	endpoint and sync - manual
+
+7) Cinder
+ 	endpoint and sync - manual
+
+8) Dashboard
+
+9) Nova on controller
+	endpoint and sync - manual
+
+10) Telemetry	
+	endpoints manual

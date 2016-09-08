@@ -1,6 +1,6 @@
 mysql -u <%= node['openstack_prep']['mysql_root_user'] %> -p<%= node['openstack_prep']['mysql_root_pass'] %> <<MYSQL_SCRIPT
 
-GRANT ALL PRIVILEGES ON root.* TO "root"@'dev-test1-controller' IDENTIFIED BY "healthseq";
+
 CREATE DATABASE IF NOT EXISTS <%= node['openstack_prep']['keystone_db_name'] %>;
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['keystone_db_name'] %>.* TO "<%= node['openstack_prep']['keystone_db_user'] %>"@'localhost' IDENTIFIED BY "<%= node['openstack_prep']['keystone_db_pass'] %>";
 GRANT ALL PRIVILEGES ON <%= node['openstack_prep']['keystone_db_name'] %>.* TO "<%= node['openstack_prep']['keystone_db_user'] %>"@'%' IDENTIFIED BY "<%= node['openstack_prep']['keystone_db_pass'] %>";

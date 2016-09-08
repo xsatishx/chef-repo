@@ -13,6 +13,7 @@ enabled_apis=ec2,osapi_compute,metadata
 verbose = true
 rpc_backend = rabbit
 auth_strategy = keystone
+
 # for telemetry
 instance_usage_audit = True
 instance_usage_audit_period = hour
@@ -41,14 +42,6 @@ force_dhcp_release = True
 flat_network_bridge = br-ex
 flat_interface = eth1
 public_interface = eth0
-
-
-# telemetry
-instance_usage_audit = True
-instance_usage_audit_period = hour
-notify_on_state_change = vm_and_task_state
-notification_driver = messagingv2
-
 
 [vnc]
 vnc_enabled = True

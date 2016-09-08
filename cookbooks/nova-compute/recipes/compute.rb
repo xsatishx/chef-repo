@@ -28,6 +28,10 @@ package 'ceilometer-agent-compute' do
   action :install
 end
 
+package 'python-novaclient' do
+  action :install
+end
+
 template '/etc/nova/nova.conf' do
   source 'novacompute.conf.erb'
   owner 'nova'
