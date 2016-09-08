@@ -1,0 +1,12 @@
+
+echo "Creating Ceilometer user..."
+openstack user create --domain default --password <%= node['telemetry']['endpoint_pass'] %> <%= node['telemetry']['endpoint_user'] %>
+openstack role add --project service --user <%= node['telemetry']['endpoint_user'] %> admin
+
+echo "Creating Ceilometer service..."
+openstack service create --name <%= node['telemetry']['db_name'] %> --description "Telemetry" metering
+  
+echo "Creating Ceilometer endpoints"
+openstack endpoint create --region RegionOne metering public http://<%= node['telemetry']['host_ip'] %>:8777
+openstack endpoint create --region RegionOne metering internal http://<%= node['telemetry']['host_ip'] %>:8777
+openstack endpoint create --region RegionOne metering admin http://<%= node['telemetry']['host_ip'] %>:8777

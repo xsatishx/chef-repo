@@ -1,4 +1,4 @@
-#
+	#
 # Cookbook Name:: tester
 # Recipe:: default
 #
@@ -18,6 +18,13 @@ end
 
 ruby_block 'reload client config' do
   block do
-    system ("ls -lrt")
+    puts node['hostname']
   end
+end
+
+template '/tmp/test' do
+  source 'test.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
 end

@@ -1,6 +1,6 @@
 [DEFAULT]
 #this is for nova
-my_ip = <%= node['nova-compute']['management_ip'] %>  # should be management ip
+my_ip = <%= node['ipaddress'] %>  # should be management ip
 use_ipv6 = false
 state_path=/var/lib/nova
 enabled_apis=ec2,osapi_compute,metadata
@@ -61,7 +61,7 @@ rabbit_userid = <%= node['rabbitmq']['user'] %>
 rabbit_password = <%= node['rabbitmq']['passwd'] %>
 
 [glance]
-host =<%= node['nova-compute']['management_ip'] %>
+host =<%= node['glance']['management_ip'] %>
 
 [oslo_concurrency]
 lock_path = /var/lib/nova/tmp

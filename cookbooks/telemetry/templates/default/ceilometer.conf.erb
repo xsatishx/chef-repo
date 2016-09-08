@@ -2,10 +2,10 @@
 
 verbose = true
 rpc_backend = rabbit
-
+auth_strategy = keystone
 [database]
 
-connection = mongodb://ceilometer:healthseq@devcontroller:27017/ceilometer
+connection = mongodb://ceilometer:healthseq@<%= node['telemetry']['management_ip'] %>:27017/ceilometer
 
 [keystone_authtoken]
 

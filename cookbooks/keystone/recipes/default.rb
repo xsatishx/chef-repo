@@ -122,11 +122,18 @@ template '/root/scripts/creds' do
   mode '0644'
 end
 
-template '/root/scripts/keystone_endpoints.sh' do
-  source 'keystone_endpoints.sh.erb'
+template '/root/scripts/2keystone_endpoints.sh' do
+  source '2keystone_endpoints.sh.erb'
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0755'
+end
+
+template '/root/scripts/1keystone_dbsync.sh' do
+  source '1keystone_dbsync.sh.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
 
 service 'keystone' do

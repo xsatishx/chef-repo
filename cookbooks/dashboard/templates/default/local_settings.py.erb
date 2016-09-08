@@ -33,8 +33,8 @@ CACHES = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-OPENSTACK_HOST = "<%= node['dashboard']['host_ip'] %>"
-OPENSTACK_KEYSTONE_URL = "http://%s:5000/v2.0" % OPENSTACK_HOST
+OPENSTACK_HOST = <%= node['dashboard']['host_ip'] %> 
+OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"
 
 OPENSTACK_KEYSTONE_BACKEND = {
@@ -343,7 +343,7 @@ try:
 except ImportError:
   pass
 
-WEBROOT='/dashboard/'
+WEBROOT='/horizon/'
 
 ALLOWED_HOSTS = ['*', ]
 

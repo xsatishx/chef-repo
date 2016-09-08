@@ -44,9 +44,9 @@ bash 'remove nova sqlite database' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-    if [ -f /var/lib/nova/nova.sqlite ] then
+
        rm -f /var/lib/nova/nova.sqlite
-    fi
+    
   EOH
 end
 

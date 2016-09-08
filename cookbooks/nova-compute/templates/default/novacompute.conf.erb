@@ -1,6 +1,6 @@
 [DEFAULT]
 #this is for nova
-my_ip = <%= node['nova-compute']['compute_management_ip'] %> 
+my_ip = <%= node['ipaddress'] %>
 use_ipv6 = false
 logdir=/var/log/nova
 state_path=/var/lib/nova
@@ -42,10 +42,18 @@ flat_network_bridge = br-ex
 flat_interface = eth1
 public_interface = eth0
 
+
+# telemetry
+instance_usage_audit = True
+instance_usage_audit_period = hour
+notify_on_state_change = vm_and_task_state
+notification_driver = messagingv2
+
+
 [vnc]
 vnc_enabled = True
 vncserver_listen = 0.0.0.0
-vncserver_proxyclient_address = <%= node['nova-compute']['compute_management_ip'] %> 
+vncserver_proxyclient_address = <%= node['hostname'] %> 
 novncproxy_base_url = http://<%= node['nova-compute']['host_ip'] %>:6080/vnc_auto.html
 
 [database]
@@ -68,7 +76,7 @@ rabbit_password = <%= node['rabbitmq']['passwd'] %>
 
 
 [glance]
-host = <%= node['nova-compute']['management_ip'] %>
+host = <%= node['glance']['management_ip'] %>
 
 [oslo_concurrency]
 lock_path = /var/lib/nova/tmp

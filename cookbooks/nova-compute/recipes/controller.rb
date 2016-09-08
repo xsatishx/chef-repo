@@ -7,21 +7,20 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-template '/root/scripts/controller_endpoints.sh' do
-  source 'controller_endpoints.sh.erb'
+template '/root/scripts/1nova_endpoints.sh' do
+  source '1nova_endpoints.sh.erb'
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0755'
 end
 
-bash 'set-nova-controller-endpoints' do
-  user 'root'
-  cwd '/root/scripts'
-  code <<-EOH
-    source creds
-    sh controller_endpoints.sh
-  EOH
+template '/root/scripts/2nova_dbsync.sh' do
+  source '2nova_dbsync.sh.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
+
 
 for packages in [ "nova-api", "nova-cert", "nova-conductor", "nova-consoleauth", "nova-novncproxy", "nova-scheduler", "python-novaclient"] do
   package packages do
@@ -37,15 +36,15 @@ template '/etc/nova/nova.conf' do
 end
 
 #Populate the database
-bash 'Populate-nova-database' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-    su -s /bin/sh -c "nova-manage db_sync" nova
-  EOH
-end
+# bash 'Populate-nova-database' do
+#   user 'root'
+#   cwd '/tmp'
+#   code <<-EOH
+#     su -s /bin/sh -c "nova-manage db_sync" nova
+#   EOH
+# end
 
-for packages in [ "nova-api", "nova-cert", "nova-conductor", "nova-consoleauth", "nova-novncproxy", "nova-scheduler", "python-novaclient"] do
+for packages in [ "nova-api", "nova-cert", "nova-conductor", "nova-consoleauth", "nova-novncproxy", "nova-scheduler"] do
   service packages do
     supports :status => true, :restart => true, :reload => true
     action [:enable]
@@ -56,9 +55,9 @@ bash 'remove nova sqlite database' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
-    if [ -f /var/lib/nova/nova.sqlite ] then
+   
        rm -f /var/lib/nova/nova.sqlite
-    fi
+ 
   EOH
 end
 

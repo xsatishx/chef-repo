@@ -37,8 +37,15 @@ template '/etc/cinder/cinder.conf' do
   mode '0644'
 end
 
-template '/root/scripts/cinder_endpoints.sh' do
-  source 'cinder_endpoints.sh.erb'
+template '/root/scripts/1cinder_endpoints.sh' do
+  source '1cinder_endpoints.sh.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+template '/root/scripts/2cinder_dbsync.sh' do
+  source '2cinder_dbsync.sh.erb'
   owner 'root'
   group 'root'
   mode '0755'

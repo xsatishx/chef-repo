@@ -9,8 +9,15 @@
 #
 # # MANUAL STEPS :  dbsync and endpoint creation
 
-template '/root/scripts/glance_endpoints.sh' do
-  source 'glance_endpoints.sh.erb'
+template '/root/scripts/1glance_endpoints.sh' do
+  source '1glance_endpoints.sh.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+template '/root/scripts/2glance_dbsync.sh' do
+  source '2glance_dbsync.sh.erb'
   owner 'root'
   group 'root'
   mode '0755'
