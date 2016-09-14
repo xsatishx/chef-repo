@@ -5,66 +5,62 @@
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "override_attributes": {
-     "tester": {
-      "name": "satish",
-      "age": 31,
-      "country": "India"
-    },
     "ntp": {
       "server1": "10.0.2.2",
       "server2": "10.0.2.3",
       "server3": "10.0.2.254"
     },
     "mysql-server": {
-      "passwd": "healthseq",
-      "host": "devcontrtest"
+      "passwd": "cpphpassword",
+      "host": "cpph-ch01-blade03"
     },
     "rabbitmq": {
+      "host_ip": "cpph-ch01-blade03",
       "user": "openstack",
-      "passwd": "healthseq"
+      "passwd": "cpphpassword"
     },
     "keystone": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "cpph-ch01-blade03",
+      "management_ip": "cpph-ch01-blade03",
       "db_name": "keystone",
       "db_user": "keystone",
-      "db_pass": "healthseq",
-      "os_token": "healthseq",
+      "db_pass": "c09f38a7e6f1248ba2dd",
+      "os_token": "cpphpassword",
       "endpoint_user": "admin",
-      "endpoint_pass": "healthseq",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_project": "admin",
       "endpoint_tenant": "admin"
     },
     "glance": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "cpph-ch01-blade03",
+      "management_ip": "cpph-ch01-blade03",
       "db_name": "glance",
       "db_user": "glance",
-      "db_pass": "healthseq",
+      "db_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_user": "glance",
-      "endpoint_pass": "healthseq",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_project": "admin",
       "endpoint_tenant": "admin"
     },
     "cinder": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "cpph-ch01-blade03",
+      "management_ip": "cpph-ch01-blade03",
       "db_name": "cinder",
       "db_user": "cinder",
-      "db_pass": "healthseq",
+      "db_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_user": "cinder",
-      "endpoint_pass": "healthseq",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_project": "admin",
       "endpoint_tenant": "admin"
     },
     "nova": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "cpph-ch01-blade03",
+      "management_ip": "cpph-ch01-blade03",
       "db_name": "cinder",
       "db_user": "cinder",
-      "db_pass": "healthseq",
+      "db_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_user": "nova",
-      "endpoint_pass": "healthseq",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_project": "admin",
       "endpoint_tenant": "admin",
       "flat_interface": "bond0",
@@ -72,32 +68,32 @@
       "flat_network_bridge": "virbr1"
     },
     "telemetry": {
-      "host_ip": "devcontrtest",
-      "management_ip": "devcontrtest",
+      "host_ip": "cpph-ch01-blade03",
+      "management_ip": "cpph-ch01-blade03",
       "db_name": "cinder",
       "db_user": "cinder",
-      "db_pass": "healthseq",
+      "db_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_user": "ceilometer",
-      "endpoint_pass": "healthseq"
+      "endpoint_pass": "c09f38a7e6f1248ba2dd"
     },
      "dashboard": {
-      "openstack_host": "devcontrtest"
+      "openstack_host": "cpph-ch01-blade03"
     },
       "openstack_prep": {
       "mysql_root_user": "root",
-      "mysql_root_pass": "healthseq",
+      "mysql_root_pass": "cpphpassword",
       "keystone_db_name": "keystone",
       "keystone_db_user": "keystone",
-      "keystone_db_pass": "healthseq",
+      "keystone_db_pass": "c09f38a7e6f1248ba2dd",
       "glance_db_name": "glance",
       "glance_db_user": "glance",
-      "glance_db_pass": "healthseq",
+      "glance_db_pass": "c09f38a7e6f1248ba2dd",
       "novacompute_db_name": "nova",
       "novacompute_db_user": "nova",
-      "novacompute_db_pass": "healthseq",
+      "novacompute_db_pass": "c09f38a7e6f1248ba2dd",
       "cinder_db_name": "cinder",
       "cinder_db_user": "cinder",
-      "cinder_db_pass": "healthseq"
+      "cinder_db_pass": "c09f38a7e6f1248ba2dd"
     }
   }
 }

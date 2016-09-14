@@ -39,10 +39,10 @@ template '/etc/mysql/conf.d/mysqld_openstack.cnf' do
   mode '0644'
 end
 
- service 'mysql' do
-   supports :status => true, :restart => true, :reload => true
-   action [:restart]
- end
+ # service 'mysql' do
+ #   supports :status => true, :restart => true, :reload => true
+ #   action [:restart]
+ # end
 
 template '/tmp/secure.sh' do
   source 'secure.sh.erb'

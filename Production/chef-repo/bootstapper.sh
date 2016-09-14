@@ -1,9 +1,8 @@
-knife bootstrap 10.0.5.26 -N compute3 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.27 -N compute4 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.28 -N compute5 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.32 -N compute6 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.33 -N compute7 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.24 -N compute8 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.35 -N compute9 -x root -P healthseq --node-ssl-verify-mode none
-knife bootstrap 10.0.5.36 -N compute10 -x root -P healthseq --node-ssl-verify-mode none
-
+knife bootstrap 10.0.5.11 -N mon01 -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.12 -N mon02 -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.13 -N mon03 -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.14 -N osd01 -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.15 -N osd02 -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.16 -N osd03 -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.10 -N radosgw -x root -P healthseq --node-ssl-verify-mode none
+knife bootstrap 10.0.5.50 -N cephadmin -x root -P healthseq --node-ssl-verify-mode none

@@ -34,3 +34,24 @@
 
 10) Telemetry	
 	endpoints manual
+
+
+service apache2 restart
+service rabbitmq-server restart
+service mysql-server restart
+
+service keystone restart
+
+service glance-registry restart
+service glance-api restart
+
+
+
+
+
+
+
+
+    Misc )
+
+    In glance-api.conf disable the glance file store and enable rados file store once rados is done
