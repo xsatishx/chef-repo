@@ -36,14 +36,7 @@
 	endpoints manual
 
 
-service apache2 restart
-service rabbitmq-server restart
-service mysql-server restart
 
-service keystone restart
-
-service glance-registry restart
-service glance-api restart
 
 
 

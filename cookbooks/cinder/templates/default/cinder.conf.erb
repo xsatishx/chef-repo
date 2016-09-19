@@ -8,7 +8,6 @@ volume_group = cinder-volumes
 verbose = True
 auth_strategy = keystone
 state_path = /var/lib/cinder
-lock_path = /var/lock/cinder
 volumes_dir = /var/lib/cinder/volumes
 my_ip = <%= node['ipaddress'] %>
 rpc_backend = rabbit
@@ -53,6 +52,8 @@ project_name = service
 username = <%= node['cinder']['db_user'] %>
 password = <%= node['cinder']['db_pass'] %>
 
+[oslo_concurrency]
+lock_path = /var/lock/cinder
 
 [oslo_messaging_rabbit]
 rabbit_host = <%= node['rabbitmq']['host_ip'] %>
