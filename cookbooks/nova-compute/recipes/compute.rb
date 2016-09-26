@@ -39,6 +39,15 @@ template '/etc/nova/nova.conf' do
   mode '0644'
 end
 
+
+template '/etc/nova/nova-compute.conf' do
+  source 'nova-compute.conf.erb'
+  owner 'nova'
+  group 'nova'
+  mode '0644'
+end
+
+
 service 'nova-compute' do
   supports :status => true, :restart => true, :reload => true
   action [:enable]

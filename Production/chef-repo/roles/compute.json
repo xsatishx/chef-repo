@@ -1,0 +1,8 @@
+{
+  "name": "compute",
+   "run_list": [
+    "recipe[extraconfigs]",
+    "recipe[add-openstack-sources]",
+    "recipe[hosts]"
+    ]
+}

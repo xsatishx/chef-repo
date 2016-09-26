@@ -48,3 +48,34 @@
     Misc )
 
     In glance-api.conf disable the glance file store and enable rados file store once rados is done
+
+
+
+service apache2 restart
+service rabbitmq-server restart
+service mysql-server restart
+
+service keystone restart
+
+service glance-registry restart
+service glance-api restart
+
+
+service cinder-scheduler restart
+service cinder-api restart
+service tgt restart
+service cinder-volume restart
+
+service ceilometer-agent-central restart
+service ceilometer-agent-notification restart
+service ceilometer-api restart
+service ceilometer-collector restart
+service ceilometer-alarm-evaluator restart
+service ceilometer-alarm-notifier restart
+
+service nova-api restart 
+service nova-cert restart
+service nova-conductor restart
+service nova-consoleauth restart 
+service nova-novncproxy restart
+service nova-scheduler restart

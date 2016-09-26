@@ -53,11 +53,11 @@
       "endpoint_project": "admin",
       "endpoint_tenant": "admin"
     },
-    "nova": {
+    "nova-compute": {
       "host_ip": "cpph-ch01-blade03",
       "management_ip": "cpph-ch01-blade03",
-      "db_name": "cinder",
-      "db_user": "cinder",
+      "db_name": "nova",
+      "db_user": "nova",
       "db_pass": "c09f38a7e6f1248ba2dd",
       "endpoint_user": "nova",
       "endpoint_pass": "c09f38a7e6f1248ba2dd",
