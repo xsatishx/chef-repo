@@ -16,12 +16,6 @@ auth_strategy = keystone
 enabled_backends = ceph
 notification_driver = messagingv2
 
-#Keep Connections under controll (chicago)
-#https://bugs.launchpad.net/nova/+bug/1225655 rpc_conn_pool_size=100 rpc_response_timeout=200 rabbit_retry_interval=5 rabbit_retry_backoff=5
-rpc_conn_pool_size=100
-rpc_response_timeout=200
-rabbit_retry_interval=5
-
 
 [ceph]
 volume_driver = cinder.volume.drivers.rbd.RBDDriver
@@ -41,6 +35,7 @@ max_pool_size=30
 max_retries=20
 retry_interval=15
 connection_debug=20
+sql_idle_timeout = 3600
 
 [keystone_authtoken]
 auth_uri = http://<%= node['cinder']['host_ip'] %>:5000
@@ -59,3 +54,8 @@ lock_path = /var/lock/cinder
 rabbit_host = <%= node['rabbitmq']['host_ip'] %>
 rabbit_userid = <%= node['rabbitmq']['user'] %>
 rabbit_password = <%= node['rabbitmq']['passwd'] %>
+#Keep Connections under controll (chicago)
+#https://bugs.launchpad.net/nova/+bug/1225655 rpc_conn_pool_size=100 rpc_response_timeout=200 rabbit_retry_interval=5 rabbit_retry_backoff=5
+rpc_conn_pool_size=100
+rpc_response_timeout=200
+rabbit_retry_interval=5

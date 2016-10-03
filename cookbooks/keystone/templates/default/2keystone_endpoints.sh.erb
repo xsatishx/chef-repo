@@ -11,7 +11,7 @@ echo "Creating keystone admin project"
 openstack project create --domain default  --description "Admin Project" admin
 
 echo "Creating keystone admin user and role"
-openstack user create --domain default --password <%= node['keystone']['endpoint_pass'] %> <%= node['keystone']['endpoint_user'] %>
+openstack user create --domain default --password <%= node['keystone']['os_token'] %> <%= node['keystone']['endpoint_user'] %>
 openstack role create admin 
 openstack role add --project admin --user admin admin
 

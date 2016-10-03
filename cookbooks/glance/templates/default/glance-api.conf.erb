@@ -4,12 +4,15 @@ verbose = True
 # for telemetry commented the below and added messagingv2
 #notification_driver = noop
 notification_driver = messagingv2
+show_image_direct_url = True
 #default_store = rbd
 show_image_direct_url = True
 rpc_backend = rabbit
 
 [database]
 connection = mysql://<%= node['glance']['db_user'] %>:<%= node['glance']['db_pass'] %>@<%= node['glance']['host_ip'] %>/<%= node['glance']['db_name'] %>
+sql_idle_timeout = 3600
+
 
 [glance_store]
 

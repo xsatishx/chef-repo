@@ -51,13 +51,13 @@ template '/tmp/secure.sh' do
   mode '0755'
 end
 
-bash 'secure-mysql-installation' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-    sh secure.sh 
-  EOH
-end
+# bash 'secure-mysql-installation' do
+#   user 'root'
+#   cwd '/tmp'
+#   code <<-EOH
+#     sh secure.sh 
+#   EOH
+# end
 
 service 'mysql' do
   supports :status => true, :restart => true, :reload => true

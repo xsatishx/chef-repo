@@ -79,3 +79,4 @@ service nova-conductor restart
 service nova-consoleauth restart 
 service nova-novncproxy restart
 service nova-scheduler restart
+

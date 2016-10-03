@@ -5,6 +5,7 @@ log_dir = /var/log/keystone
 
 [database]
 connection = mysql://<%= node['keystone']['db_user'] %>:<%= node['keystone']['db_pass'] %>@<%= node['keystone']['host_ip'] %>/<%= node['keystone']['db_name'] %>
+idle_timeout = 200
 
 [memcache]
 servers = localhost:11211
@@ -14,7 +15,9 @@ driver = sql
 
 [token]
 provider = uuid
-driver = memcache
+#driver = memcache
+# used by chicago
+driver = keystone.token.persistence.backends.sql.Token
 
 [extra_headers]
 Distribution = Ubuntu
