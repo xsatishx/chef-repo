@@ -13,6 +13,8 @@ enabled_apis=ec2,osapi_compute,metadata
 verbose = true
 rpc_backend = rabbit
 auth_strategy = keystone
+state_path = /mnt/raid1/nova
+instances_path = /mnt/raid1/nova/instances
 
 rabbit_host = <%= node['rabbitmq']['host_ip'] %>
 rabbit_userid = <%= node['rabbitmq']['user'] %>

@@ -90,3 +90,12 @@ service 'ceilometer-agent-compute' do
   supports :status => true, :restart => true, :reload => true
   action [:enable]
 end
+
+# To use the /mnt/raid as local storage, added state_path and instances_path 
+# to nova.conf and created the respective directories with nova:nova perms
+directory '/mnt/raid1/nova/instances' do
+  owner 'nova'
+  group 'nova'
+  mode '0755'
+  action :create
+end

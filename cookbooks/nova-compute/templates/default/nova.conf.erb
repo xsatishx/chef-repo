@@ -44,4 +44,4 @@ password = <%= node['nova-compute']['db_pass'] %>
 
 
 [glance]
-host = cpph-ch01-blade03
+host = <%= node['nova-compute']['management_ip'] %>
