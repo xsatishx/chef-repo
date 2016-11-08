@@ -21,3 +21,30 @@ driver = keystone.token.persistence.backends.sql.Token
 
 [extra_headers]
 Distribution = Ubuntu
+
+==============================================================================
+
+[DEFAULT]
+auth_region = regionOne
+bind_host = 0.0.0.0
+public_port = 5000
+admin_port = 35357
+admin_token = efe94a9135bc733851c51b
+compute_port = 8774
+verbose = True
+debug = True
+log_config = /etc/keystone/logging.conf
+rabbit_host=api-igsb.osdc.io
+rabbit_port=5672
+rabbit_userid=openstack
+rabbit_password=Ledooth1
+
+[database]
+connection = mysql://keystone:eungairaipikaecoovuengohdiesooxi@mysql-igsb.osdc.io/keystone
+idle_timeout = 200
+
+
+[token]
+driver = keystone.token.persistence.backends.sql.Token
+expiration = 86400
+
