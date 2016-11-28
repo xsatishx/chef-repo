@@ -1,10 +1,19 @@
 
 [DEFAULT]
-notification_driver = messagingv2
+notification_driver = messaging
 rpc_backend = rabbit
+#Below are taken from US config file
+backlog = 4096
+bind_host = 0.0.0.0
+bind_port = 9191
+api_limit_max = 1000
+limit_param_default = 25
 
 [database]
 connection = mysql://<%= node['glance']['db_user'] %>:<%= node['glance']['db_pass'] %>@<%= node['glance']['host_ip'] %>/<%= node['glance']['db_name'] %>
+# Deprecated group/name - [DATABASE]/sql_idle_timeout
+#sql_idle_timeout = 3600
+idle_timeout = 3600
 
 [keystone_authtoken]
 auth_uri = http://<%= node['glance']['host_ip'] %>:5000
@@ -24,25 +33,3 @@ flavor = keystone
 rabbit_host = <%= node['rabbitmq']['host_ip'] %>
 rabbit_userid = <%= node['rabbitmq']['user'] %>
 rabbit_password = <%= node['rabbitmq']['passwd'] %>
-
-====================
-
-[DEFAULT]
-bind_host = 0.0.0.0
-bind_port = 9191
-log_file = /var/log/glance/registry.log
-backlog = 4096
-sql_connection=mysql://glance:eevoojohdohxahgielosohjiexufieli@mysql-igsb.osdc.io/glance
-connection=mysql://glance:eevoojohdohxahgielosohjiexufieli@mysql-igsb.osdc.io/glance
-sql_idle_timeout = 3600
-api_limit_max = 1000
-limit_param_default = 25
-[keystone_authtoken]
-auth_host = api-igsb.osdc.io
-auth_port = 35357
-auth_protocol = http
-admin_tenant_name = service
-admin_user = glance
-admin_password = ohvaechiechoovaquetaeyeiceehieza
-[paste_deploy]
-flavor=keystone

@@ -1,50 +1,48 @@
 [DEFAULT]
+auth_region = regionOne
+bind_host = 0.0.0.0
+public_port = 5000
+admin_port = 35357
 admin_token = <%= node['keystone']['os_token'] %>
-verbose = true
+compute_port = 8774
+compute_port = 8774
+log_config = /etc/keystone/logging.conf
 log_dir = /var/log/keystone
+verbose = True
+debug = True
 
 [database]
 connection = mysql://<%= node['keystone']['db_user'] %>:<%= node['keystone']['db_pass'] %>@<%= node['keystone']['host_ip'] %>/<%= node['keystone']['db_name'] %>
 idle_timeout = 200
 
+[oslo_messaging_rabbit]
+rabbit_host = <%= node['rabbitmq']['host_ip'] %>
+rabbit_userid = <%= node['rabbitmq']['user'] %>
+rabbit_password = <%= node['rabbitmq']['passwd'] %>
+rabbit_port=5672
+
 [memcache]
-servers = localhost:11211
+# NOT USED IN CHICAGO #
+# servers = localhost:11211
 
 [revoke]
-driver = sql
+# NOT USED IN CHICAGO #
+# driver = sql
 
 [token]
 provider = uuid
-#driver = memcache
-# used by chicago
+# DOCUMENTATION # 
+# driver = memcache
+# USED IN CHICAGO #
 driver = keystone.token.persistence.backends.sql.Token
+expiration = 86400
 
 [extra_headers]
 Distribution = Ubuntu
 
-==============================================================================
-
-[DEFAULT]
-auth_region = regionOne
-bind_host = 0.0.0.0
-public_port = 5000
-admin_port = 35357
-admin_token = efe94a9135bc733851c51b
-compute_port = 8774
-verbose = True
-debug = True
-log_config = /etc/keystone/logging.conf
-rabbit_host=api-igsb.osdc.io
-rabbit_port=5672
-rabbit_userid=openstack
-rabbit_password=Ledooth1
-
-[database]
-connection = mysql://keystone:eungairaipikaecoovuengohdiesooxi@mysql-igsb.osdc.io/keystone
-idle_timeout = 200
-
-
-[token]
-driver = keystone.token.persistence.backends.sql.Token
-expiration = 86400
-
+[os_inherit]
+##I think we need this set to True for the nova admin user to controll everything ?
+## Its supposed to be a use case where A cloud provider , resells to a "domain"
+## The domain admin has full admin privs to his "domain". But the Provider
+## needs to have those privs as well to kill sub user vms.
+enabled=true
