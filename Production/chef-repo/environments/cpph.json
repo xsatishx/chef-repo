@@ -6,22 +6,22 @@
   "chef_type": "environment",
   "override_attributes": {
     "ntp": {
-      "server1": "10.0.2.2",
-      "server2": "10.0.2.3",
-      "server3": "10.0.2.254"
-    },
+      "server1": "10.0.5.2",
+      "server2": "10.0.5.3",
+      "server2": "10.0.2.254"
+     },
     "mysql-server": {
       "passwd": "cpphpassword",
-      "host": "cpph-controller01"
+      "host": "cpph-ch01-blade02"
     },
     "rabbitmq": {
-      "host_ip": "cpph-controller01",
+      "host_ip": "cpph-ch01-blade02",
       "user": "openstack",
       "passwd": "cpphpassword"
     },
     "keystone": {
-      "host_ip": "cpph-controller01",
-      "management_ip": "cpph-controller01",
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
       "db_name": "keystone",
       "db_user": "keystone",
       "db_pass": "c09f38a7e6f1248ba2dd",
@@ -32,8 +32,8 @@
       "endpoint_tenant": "admin"
     },
     "glance": {
-      "host_ip": "cpph-controller01",
-      "management_ip": "cpph-controller01",
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
       "db_name": "glance",
       "db_user": "glance",
       "db_pass": "c09f38a7e6f1248ba2dd",
@@ -43,8 +43,8 @@
       "endpoint_tenant": "admin"
     },
     "cinder": {
-      "host_ip": "cpph-controller01",
-      "management_ip": "cpph-controller01",
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
       "db_name": "cinder",
       "db_user": "cinder",
       "db_pass": "c09f38a7e6f1248ba2dd",
@@ -54,8 +54,8 @@
       "endpoint_tenant": "admin"
     },
     "nova-compute": {
-      "host_ip": "cpph-controller01",
-      "management_ip": "cpph-controller01",
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
       "db_name": "nova",
       "db_user": "nova",
       "db_pass": "c09f38a7e6f1248ba2dd",
@@ -68,8 +68,8 @@
       "flat_network_bridge": "virbr1"
     },
     "telemetry": {
-      "host_ip": "cpph-controller01",
-      "management_ip": "cpph-controller01",
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
       "db_name": "cinder",
       "db_user": "cinder",
       "db_pass": "c09f38a7e6f1248ba2dd",
@@ -77,7 +77,7 @@
       "endpoint_pass": "c09f38a7e6f1248ba2dd"
     },
      "dashboard": {
-      "openstack_host": "cpph-controller01"
+      "openstack_host": "cpph-ch01-blade02"
     },
       "openstack_prep": {
       "mysql_root_user": "root",
