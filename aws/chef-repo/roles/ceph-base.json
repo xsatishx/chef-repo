@@ -1,0 +1,10 @@
+{
+  "name": "ceph-base",
+   "run_list": [
+    "recipe[apt]",
+    "recipe[ntp]",
+    "recipe[chef-support]",
+    "recipe[hosts]",
+    "recipe[extraconfigs]"
+  ]
+}

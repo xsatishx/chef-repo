@@ -1,0 +1,1 @@
+knife bootstrap 35.165.171.158 -N satish-test -i ../../../ssh-keys/healthseq_oregon.pem -x ubuntu --node-ssl-verify-mode none --sudo

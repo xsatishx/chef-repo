@@ -1,0 +1,12 @@
+{
+  "name": "base",
+   "run_list": [
+    "recipe[apt]",
+    "recipe[add-openstack-sources]",
+    "recipe[hosts]",
+    "recipe[ntp]",
+    "recipe[rabbitmq]",
+    "recipe[extraconfigs]"
+    
+  ]
+}
