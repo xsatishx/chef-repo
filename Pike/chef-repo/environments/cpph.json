@@ -1,0 +1,99 @@
+{
+  "name": "cpph",
+  "description": "The CPPH PDC by HealthSeq",
+  "cookbook_versions": {},
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "override_attributes": {
+    "ntp": {
+      "server1": "10.0.5.2",
+      "server2": "10.0.5.3",
+      "server2": "10.0.2.254"
+     },
+    "mysql-server": {
+      "passwd": "cpphpassword",
+      "host": "cpph-ch01-blade02"
+    },
+    "rabbitmq": {
+      "host_ip": "cpph-ch01-blade02",
+      "user": "openstack",
+      "passwd": "cpphpassword"
+    },
+    "keystone": {
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
+      "db_name": "keystone",
+      "db_user": "keystone",
+      "db_pass": "c09f38a7e6f1248ba2dd",
+      "os_token": "cpphpassword",
+      "endpoint_user": "admin",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin"
+    },
+    "glance": {
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
+      "db_name": "glance",
+      "db_user": "glance",
+      "db_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_user": "glance",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin"
+    },
+    "cinder": {
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
+      "db_name": "cinder",
+      "db_user": "cinder",
+      "db_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_user": "cinder",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin"
+    },
+    "nova-compute": {
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
+      "db_name": "nova",
+      "db_user": "nova",
+      "db_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_user": "nova",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_project": "admin",
+      "endpoint_tenant": "admin",
+      "flat_interface": "bond0",
+      "public_interface": "bond0.3526",
+      "flat_network_bridge": "virbr1"
+    },
+    "telemetry": {
+      "host_ip": "cpph-ch01-blade02",
+      "management_ip": "cpph-ch01-blade02",
+      "db_name": "cinder",
+      "db_user": "cinder",
+      "db_pass": "c09f38a7e6f1248ba2dd",
+      "endpoint_user": "ceilometer",
+      "endpoint_pass": "c09f38a7e6f1248ba2dd"
+    },
+     "dashboard": {
+      "openstack_host": "cpph-ch01-blade02"
+    },
+      "openstack_prep": {
+      "mysql_root_user": "root",
+      "mysql_root_pass": "cpphpassword",
+      "keystone_db_name": "keystone",
+      "keystone_db_user": "keystone",
+      "keystone_db_pass": "c09f38a7e6f1248ba2dd",
+      "glance_db_name": "glance",
+      "glance_db_user": "glance",
+      "glance_db_pass": "c09f38a7e6f1248ba2dd",
+      "novacompute_db_name": "nova",
+      "novacompute_db_user": "nova",
+      "novacompute_db_pass": "c09f38a7e6f1248ba2dd",
+      "cinder_db_name": "cinder",
+      "cinder_db_user": "cinder",
+      "cinder_db_pass": "c09f38a7e6f1248ba2dd"
+    }
+  }
+}
