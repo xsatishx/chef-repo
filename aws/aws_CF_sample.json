@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"  
+Resources:  
+  WebInstance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.nano
+      ImageId: ami-80861296
+      KeyName: nvirginia
+      Monitoring: true
+      SecurityGroupIds:
+        - sg-10db5164
+      SubnetId: subnet-b9d361b5
+      Tags:
+        -
+          Key: Name
+          Value: webserver1
+
+  WebInstance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.nano
+      ImageId: ami-80861296
+      KeyName: nvirginia
+      Monitoring: true
+      SecurityGroupIds:
+        - sg-10db5164
+      SubnetId: subnet-b9d361b5
+      Tags:
+        -
+          Key: Name
+          Value: webserver2
+
+
+  ElasticLoadBalancer:
+    Type: AWS::ElasticLoadBalancing::LoadBalancer
+    Properties:
+      AvailabilityZones: !GetAZs ''
+      CrossZone: 'true'
+      Instances: [!Ref 'WebInstance1', !Ref 'WebInstance2']
+      Listeners:
+      - LoadBalancerPort: '80'
+        InstancePort: '80'
+        Protocol: HTTP
+      HealthCheck:
+        Target: HTTP:80/
+        HealthyThreshold: '3'
+        UnhealthyThreshold: '5'
+        Interval: '30'
+        Timeout: '5'
+        Timeout: '5'
