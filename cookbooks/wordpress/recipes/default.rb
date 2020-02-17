@@ -2,7 +2,7 @@
 # Recipe:: default
 # Maintainer Satish Balakrishnan
 
-for packages in [ "apache2","curl","php-curl", "php-gd", "php-mbstring", "php-mcrypt", "php-xml", "php-xmlrpc", "mysql-client"] do
+for packages in [ "apache2","curl","php-curl", "php-mcrypt", "php-xml", "php-xmlrpc", "mysql-client"] do
   package packages do
     action :install
   end
